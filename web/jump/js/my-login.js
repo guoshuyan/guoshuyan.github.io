@@ -80,7 +80,7 @@ function login(token){
 		if (email_text == "yanyan11223344@163.com" || email_text == "admin@admin.com" || email_text == "web@admin.com"){
 			if (password_text == "123456" || password_text == "12345678" || password_text == "password"){
 				alert("(0,  0) 成功");
-				window.open("https://guoshuyan.github.io/web/jump/_index.html", "_self");
+				window.open("https://guoshuyan.github.io/web/jump/login_S/index.html", "_self");
 			}else{
 				alert("(1, -2) 账号或密码错误");
 			}
