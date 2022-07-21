@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 200ms ease;
+}
+
+.box > div {
+    transition: all 200ms ease;
+}
+
+.light {
+    background: pink;
+}
+
+.light .box {
+    width: 120px;
+    height: 60px;
+    background: #fdd6df;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+}
+
+.light .box > div {
+    position: absolute;
+    left: 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background: pink url(image/太阳.png) 6px 7px no-repeat;
+    background-size: 35px 35px;
+}
+
+.dark {
+    background: rgba(50,50,50,1);
+}
+
+.dark .box {
+    width: 120px;
+    height: 60px;
+    background: rgba(70,70,70,1);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+}
+
+.dark .box > div {
+    position: absolute;
+    left: 65px;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background: rgba(50,50,50,1) url(image/月亮.png) 6px 7px no-repeat;
+    background-size: 35px 35px;
+}
+>>>>>>> 9fbd25815cadbae535f6ffd107fe1b680daf1c08

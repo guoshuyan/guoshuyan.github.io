@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>网页后台管理系统 - 登录</title>
+		<link rel="stylesheet" href="style.css">
+		<script>
+			var login_token = '47e20847bca96ad366002d024be1135fd024aeeb';
+			function login(token){
+				if (login_token == token){
+					var account_text = document['getElementById']('account')['value'];
+					var password_text = document['getElementById']('password')['value'];
+					if (account_text == "admin" || account_text == "shuyan"){
+						if (password_text == "123456" || password_text == "12345678"){
+							alert("(0,  0) 成功");
+							window.open("https://guoshuyan.github.io/admin/admin.html", "_self");
+						}else{
+							alert("(1, -2) 账号或密码错误");
+						}
+					}else{
+						alert("(1, -2) 账号或密码错误");
+					}
+				}else{
+					alert("Token异常！请和网站管理员联系，错误代码：(1, -5)");
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="box">
+		    <h2>网站后台登录</h2>
+		    <div class="input-box">
+		        <label>账号</label>
+		        <input type="text" id="account"/>
+		    </div>
+		    <div class="input-box">
+		        <label>密码</label>
+		        <input type="password" id="password"/>
+		    </div>
+		    <div class="btn-box">
+		        <div>
+		            <button onclick="login('47e20847bca96ad366002d024be1135fd024aeeb')">登录</button>
+		        </div>
+		    </div>
+		</div>
+	</body>
+
+</html>

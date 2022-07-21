@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>DarkOrLight</title>
+    <link rel="stylesheet" href="./index.css"/>
+</head>
+<body class="light">
+    <div onclick="openDark(this)" class="box">
+        <div></div>
+    </div>
+
+    <script type="text/javascript">
+        function openDark(box) {
+            let body = document.body;
+            if (box.state == null) {
+                box.state = false;
+            }
+            if (box.state) {
+                body.className = "light";
+            } else {
+                body.className = "dark";
+            }
+            box.state = !box.state;
+        }
+    </script>
+</body>
+</html>
