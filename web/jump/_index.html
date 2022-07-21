@@ -9,7 +9,7 @@
 			console.log("-------------------- gV 开头是 全局变量记录信息 --------------------");
 			console.log("-------------------- pD 开头是 photoDOwnload 函数 --------------------");
 			console.log("-------------------- 全局变量记录开始 --------------------");
-			var MaxPhoto = 44; // 最大照片数
+			var MaxPhoto = 51; // 最大照片数
 			console.log("gV  变量 MaxPhoto 的值为 " + MaxPhoto.toString());
 			console.log("gV  最大照片数：" + MaxPhoto.toString());
 			var MinPhoto = 0; // 最小照片数
@@ -212,6 +212,27 @@
 						} else if (photo_id == "044"){
 							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/44.photo");
 							alert("将photo后缀改为jpeg即可。");
+						} else if (photo_id == "045"){
+							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/45.photo");
+							alert("将photo后缀改为jpeg即可。");
+						} else if (photo_id == "046"){
+							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/46.photo");
+							alert("将photo后缀改为jpeg即可。");
+						} else if (photo_id == "047"){
+							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/47.photo");
+							alert("将photo后缀改为jpeg即可。");
+						} else if (photo_id == "048"){
+							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/48.photo");
+							alert("将photo后缀改为jpeg即可。");
+						} else if (photo_id == "049"){
+							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/49.photo");
+							alert("将photo后缀改为jpeg即可。");
+						} else if (photo_id == "050"){
+							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/50.photo");
+							alert("将photo后缀改为jpeg即可。");
+						} else if (photo_id == "051"){
+							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/51.photo");
+							alert("将photo后缀改为jpeg即可。");
 						} else {
 							alert("未找到图画，请与网站管理员联系。");
 						}
@@ -338,7 +359,7 @@
 			<tr>
 				<td>MyPhotos (70000)</td>
 				<td>我的私密照片</td>
-				<td><input id="photos_num" value="请输入网站管理员给您的ID" onfocus="if (value =='请输入网站管理员给您的ID'){value =''}" onblur="if (value ==''){value='请输入网站管理员给您的ID'}" width="200px"></input></td>
+				<td><input id="photos_num" placeholder="请输入网站管理员给您的ID" width="200px"></input></td>
 				<td>×<button onclick="photoDownload()">确定</button></td>
 			</tr>
 		</table>
