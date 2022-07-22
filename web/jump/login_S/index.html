@@ -4,241 +4,297 @@
 		<meta charset="utf-8">
 		<title>网站快速跳转 - 主页面</title>
 		<script>
+			var Debug = 0; // 调试模式
 			console.log("小B崽子，看啥呢。");
-			console.log("-------------------- cN 开头是 checkNumber 函数 --------------------");
-			console.log("-------------------- gV 开头是 全局变量记录信息 --------------------");
-			console.log("-------------------- pD 开头是 photoDownload 函数 --------------------");
-			console.log("-------------------- 全局变量记录开始 --------------------");
-			var MaxPhoto = 51; // 最大照片数
-			console.log("gV  变量 MaxPhoto 的值为 " + MaxPhoto.toString());
-			console.log("gV  最大照片数：" + MaxPhoto.toString());
-			var MinPhoto = 0; // 最小照片数
-			console.log("gV  变量 MinPhoto 的值为 " + MinPhoto.toString());
-			console.log("gV  最小照片数：" + MinPhoto.toString());
-			console.log("-------------------- 全局变量记录结束 --------------------");
+			if (Debug == 1){
+				console.log("-------------------- cN 开头是 checkNumber 函数 --------------------");
+				console.log("-------------------- gV 开头是 全局变量记录信息 --------------------");
+				console.log("-------------------- pD 开头是 photoDownload 函数 --------------------");
+				console.log("-------------------- 全局变量记录开始 --------------------");
+				var MaxPhoto = 51; // 最大照片数
+				console.log("gV  变量 MaxPhoto 的值为 " + MaxPhoto.toString());
+				console.log("gV  最大照片数：" + MaxPhoto.toString());
+				console.log("gV  变量 Debug 的值为 " + Debug.toString());
+				console.log("gV  调试模式：开启");
+				console.warn("由于您开启了 调试模式 ，ID输入数字编号即可。");
+				var MinPhoto = 0; // 最小照片数
+				console.log("gV  变量 MinPhoto 的值为 " + MinPhoto.toString());
+				console.log("gV  最小照片数：" + MinPhoto.toString());
+				console.log("-------------------- 全局变量记录结束 --------------------");
+			}
 			function checkNumber()
-			{	
-				console.log("cN  函数 - checkNumber");
+			{
+				if (Debug == 1){
+					console.log("cN  函数 - checkNumber (该函数不应出现)");
+				}
 				var photos_num_I = parseInt(document.getElementById("photos_num").value); // ID_Int32
-				console.log("cN  变量 photos_num_I 的值为 " + photos_num_I.toString());
+				if (Debug == 1){
+					console.log("cN  变量 photos_num_I 的值为 " + photos_num_I.toString() + " (该信息不应出现)");
+				}
 				isnan = isNaN(photos_num_I); // 是否不是数字
-				console.log("cN  变量 isnan 的值为 " + isnan.toString());
+				if (Debug == 1){
+					console.log("cN  变量 isnan 的值为 " + isnan.toString() + " (该信息不应出现)");
+				}
 				if (isnan == true){
-					console.log("cN  不是数字");
-					console.log("cN  函数 checkNumber 返回的值为 false ， 原因：不是数字");
+					if (Debug == 1){
+						console.log("cN  不是数字" + " (该信息不应出现)");
+						console.log("cN  函数 checkNumber 返回的值为 false ， 原因：不是数字" + " (该信息不应出现)");
+					}
 					return false;
 				}else{
-					console.log("cN  是数字");
+					if (Debug == 1){
+						console.log("cN  是数字" + " (该信息不应出现)");
+					}
 					var photos_num = document.getElementById("photos_num").value; // ID
-					console.log("cN  变量 photos_num 的值为 " + photos_num.toString());
+					if (Debug == 1){
+						console.log("cN  变量 photos_num 的值为 " + photos_num.toString() + " (该信息不应出现)");
+					}
 					var photos_num_list = photos_num.split(''); // 将 photos_num 逐个分成单个字符
-					console.log("cN  已将 photos_num 逐个分成单个字符，保存为photos_num_list，值为：" + photos_num_list.toString());
+					if (Debug == 1){
+						console.log("cN  已将 photos_num 逐个分成单个字符，保存为photos_num_list，值为：" + photos_num_list.toString() + " (该信息不应出现)");
+					}
 					if (photos_num.length == 10){ // 长度是否为 10
-						console.log("cN  属性 photos_num.length 的值是10");
+						if (Debug == 1){
+							console.log("cN  属性 photos_num.length 的值是10" + " (该信息不应出现)");
+						}
 						if ((parseInt(photos_num_list[0]) + parseInt(photos_num_list[1]) + parseInt(photos_num_list[2]) + parseInt(photos_num_list[3])) == 20){ // 开头加起来是否是20
-							console.log("cN  开头加起来是20，预定值：20");
+							if (Debug == 1){
+								console.log("cN  开头加起来是20，预定值：20" + " (该信息不应出现)");
+							}
 							if ((parseInt(photos_num_list[7]) + parseInt(photos_num_list[8]) + parseInt(photos_num_list[9])) == 18){ // 结尾加起来是否是18
-								console.log("cN  结尾加起来是18，预定值18");
-								console.log("cN  函数 checkNumber 返回的值为 true ， 原因：成功");
+								if (Debug == 1){
+									console.log("cN  结尾加起来是18，预定值18" + " (该信息不应出现)");
+									console.log("cN  函数 checkNumber 返回的值为 true ， 原因：成功" + " (该信息不应出现)");
+								}
 								return true;
 							}else{
-								console.log("cN  结尾加起来是 " + (parseInt(photos_num_list[7]) + parseInt(photos_num_list[8]) + parseInt(photos_num_list[9])) + "，但预定值是18");
-								console.log("cN  函数 checkNumber 返回的值为 false ， 原因：后三位加起来不是18");
+								if (Debug == 1){
+									console.log("cN  结尾加起来是 " + (parseInt(photos_num_list[7]) + parseInt(photos_num_list[8]) + parseInt(photos_num_list[9])) + "，但预定值是18" + " (该信息不应出现)");
+									console.log("cN  函数 checkNumber 返回的值为 false ， 原因：后三位加起来不是18" + " (该信息不应出现)");
+								}
 								return false;
 							}
 						}else{
-							console.log("cN  开头加起来是 " + (parseInt(photos_num_list[0]) + parseInt(photos_num_list[1]) + parseInt(photos_num_list[2]) + parseInt(photos_num_list[3])) + "，但预定值为20");
-							console.log("cN  函数 checkNumber 返回的值为 false ， 原因：前四位开头加起来不是20");
+							if (Debug == 1){
+								console.log("cN  开头加起来是 " + (parseInt(photos_num_list[0]) + parseInt(photos_num_list[1]) + parseInt(photos_num_list[2]) + parseInt(photos_num_list[3])) + "，但预定值为20" + " (该信息不应出现)");
+								console.log("cN  函数 checkNumber 返回的值为 false ， 原因：前四位开头加起来不是20" + " (该信息不应出现)");
+							}
 							return false;
 						}
 					}else{
-						console.log("cN  长度不是10");
-						console.log("cN  函数 checkNumber 返回的值为 false ， 原因：字符长度不为10");
+						if (Debug == 1){
+							console.log("cN  长度不是10" + " (该信息不应出现)");
+							console.log("cN  函数 checkNumber 返回的值为 false ， 原因：字符长度不为10" + " (该信息不应出现)");
+						}
 						return false;
 					}
 				}
 			}
+			function seletePhoto(photo_id, debug_switch){
+				console.log("pD  已选择图画 " + photo_id.toString());
+				if (photo_id == "000"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/00.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "001"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/01.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "002"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/02.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "003"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/03.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "004"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/04.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "005"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/05.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "006"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/06.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "007"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/07.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "008"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/08.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "009"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/09.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "010"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/10.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "011"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/11.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "012"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/12.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "013"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/13.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "014"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/14.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "015"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/15.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "016"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/16.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "017"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/17.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "018"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/18.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "019"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/19.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "020"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/20.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "021"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/21.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "022"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/22.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "023"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/23.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "024"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/24.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "025"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/25.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "026"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/26.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "027"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/27.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "028"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/28.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "029"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/29.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "030"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/30.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "031"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/31.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "032"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/32.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "033"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/33.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "034"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/34.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "035"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/35.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "036"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/36.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "037"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/37.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "038"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/38.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "039"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/39.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "040"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/40.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "041"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/41.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "042"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/42.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "043"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/43.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "044"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/44.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "045"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/45.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "046"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/46.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "047"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/47.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "048"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/48.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "049"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/49.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "050"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/50.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else if (photo_id == "051"){
+					window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/51.photo");
+					alert("将photo后缀改为jpeg即可。");
+				} else {
+					if (debug_switch == 0){
+						alert("未找到图画，请与网站管理员联系。");
+					}else if (debug_switch == 1){
+						alert("未找到图画，请直接填写ID。");
+					}else {
+						alert("debug_switch 内容异常，请检查您提交的内容");
+					}
+				}
+			}
 			function photoDownload(){
-				console.log("-------------------- 日志记录开始 --------------------");
-				console.log("pD  函数 - photoDownload");
-				if (checkNumber() == false){
-					console.log("pD  checkNumber 函数检测未通过，请更改ID");
-					alert("请检查您的ID！");
-				}else{
-					var photos_num = document.getElementById("photos_num").value; // ID
-					console.log("pD  变量 photos_num 的值为 " + photos_num.toString());
-					var photo_id = photos_num.substr(4, 3);
-					console.log("pD  变量 photo_id 的值为 " + photos_num.toString());
-					if (parseInt(photo_id) > MaxPhoto){ // ID中的第 5 位（包含）到第 6 位（包含），如5555[999]666大于最大照片数
-						console.log("pD  变量 photo_id 大于 " + MaxPhoto.toString() + " ，请将数字调小。");
-						alert("请检查您的ID！");
-					}else if (parseInt(photo_id) < MinPhoto){ // ID中的第 6 位（包含）到第 8 位（包含），如5555[-99]666小于最小照片数
-						console.log("pD  变量 photo_id 小于 " + MinPhoto.toString() + " ，请将数字调大。");
+				if (Debug == 1){
+					console.log("-------------------- 日志记录开始 --------------------");
+					console.log("pD  函数 - photoDownload");
+					var photo_id = document.getElementById("photos_num").value; // ID
+					seletePhoto(photo_id, 1);
+					console.log("-------------------- 日志记录结束 --------------------");
+				} else if (Debug == 0){
+					if (checkNumber() == false){
+						if (Debug == 1){
+							console.error("pD  checkNumber 函数检测未通过，请更改ID (该错误不应出现)");
+						}
 						alert("请检查您的ID！");
 					}else{
-						console.log("pD  已选择图画 " + photo_id.toString());
-						if (photo_id == "000"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/00.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "001"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/01.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "002"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/02.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "003"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/03.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "004"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/04.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "005"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/05.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "006"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/06.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "007"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/07.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "008"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/08.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "009"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/09.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "010"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/10.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "011"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/11.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "012"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/12.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "013"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/13.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "014"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/14.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "015"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/15.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "016"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/16.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "017"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/17.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "018"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/18.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "019"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/19.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "020"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/20.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "021"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/21.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "022"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/22.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "023"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/23.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "024"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/24.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "025"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/25.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "026"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/26.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "027"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/27.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "028"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/28.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "029"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/29.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "030"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/30.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "031"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/31.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "032"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/32.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "033"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/33.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "034"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/34.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "035"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/35.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "036"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/36.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "037"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/37.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "038"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/38.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "039"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/39.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "040"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/40.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "041"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/41.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "042"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/42.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "043"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/43.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "044"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/44.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "045"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/45.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "046"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/46.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "047"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/47.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "048"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/48.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "049"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/49.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "050"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/50.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else if (photo_id == "051"){
-							window.location.assign("https://guoshuyan.github.io/3DD7BC8CAA708AC8248B32F5AD725049/51.photo");
-							alert("将photo后缀改为jpeg即可。");
-						} else {
-							alert("未找到图画，请与网站管理员联系。");
+						var photos_num = document.getElementById("photos_num").value; // ID
+						if (Debug == 1){
+							console.log("pD  变量 photos_num 的值为 " + photos_num.toString() + " (该信息不应出现)");
+						}
+						var photo_id = photos_num.substr(4, 3);
+						if (Debug == 1){
+							console.log("pD  变量 photo_id 的值为 " + photos_num.toString() + " (该信息不应出现)");
+						}
+						if (parseInt(photo_id) > MaxPhoto){ // ID中的第 5 位（包含）到第 6 位（包含），如5555[999]666大于最大照片数
+							if (Debug == 1){
+								console.error("pD  变量 photo_id 大于 " + MaxPhoto.toString() + " ，请将数字调小。 (该错误不应出现)");
+							}
+							alert("请检查您的ID！");
+						}else if (parseInt(photo_id) < MinPhoto){ // ID中的第 6 位（包含）到第 8 位（包含），如5555[-99]666小于最小照片数
+							if (Debug == 1){
+								console.error("pD  变量 photo_id 小于 " + MinPhoto.toString() + " ，请将数字调大。 (该错误不应出现)");
+							}
+							alert("请检查您的ID！");
+						}else{
+							seletePhoto(photo_id, 0)
 						}
 					}
 				}
-				console.log("-------------------- 日志记录结束 --------------------");
 			}
 		</script>
 	</head>
