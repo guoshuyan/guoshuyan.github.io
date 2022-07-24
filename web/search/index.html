@@ -8,17 +8,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>树岩起始页</title>
-    <link rel="icon" href="static/icon.png" sizes="192x192" />
-    <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/Dreamer-Paul/Kico-Style@master/kico.css" />
-    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1809713_7obvxtx02f.css" />
-    <link href="https://fastly.jsdelivr.net/gh/FortAwesome/Font-Awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="static/main.css" />
-    <script src="https://fastly.jsdelivr.net/gh/Dreamer-Paul/Kico-Style/kico.js" defer></script>
-    <script src="static/main.js" defer></script>
+    <link rel="icon" href="static/icon.png" sizes="192x192">
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/Dreamer-Paul/Kico-Style@master/kico.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1809713_7obvxtx02f.css">
+    <link href="https://fastly.jsdelivr.net/gh/FortAwesome/Font-Awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="static/main.css">
+    <script src="https://fastly.jsdelivr.net/gh/Dreamer-Paul/Kico-Style/kico.js" defer=""></script>
+    <script src="static/main.js" defer=""></script>
 </head>
 <body>
 <header>
-    <div class="action-btn edit" ks-tag="bottom" ks-text="管理导航项（未完成）">
+    <div class="action-btn edit" ks-tag="bottom" ks-text="管理导航项">
         <i class="fa fa-edit"></i>
     </div>
     <div class="action-btn updated" ks-tag="bottom" ks-text="更新日志">
@@ -40,7 +40,7 @@
             <button class="btn transparent" title="搜索"><i class="fa fa-search"></i></button>
         </form>
     </section>
-    <!-- <section class="navi-items"><a href="https://fanyi.baidu.com" class="item" data-id="0" target="_blank" draggable="true"><figure class="navi-icon" style="background: #4395ff">
+    <section class="navi-items"><a href="https://fanyi.baidu.com" class="item" data-id="0" target="_blank" draggable="true"><figure class="navi-icon" style="background: #4395ff">
               <i class="fa fa-language"></i>
           </figure>
           <p class="navi-title">翻译</p></a><a href="https://www.jd.com" class="item" data-id="1" target="_blank" draggable="true"><figure class="navi-icon" style="background: #d92610">
@@ -88,7 +88,7 @@
           <p class="navi-title">12306</p></a><a href="https://pan.baidu.com" class="item" data-id="35" target="_blank" draggable="true"><figure class="navi-icon" style="background: #3b8bfe">
               <i class="iconfont icon-baiduyun"></i>
           </figure>
-          <p class="navi-title">百度云盘</p></a></section> -->
+          <p class="navi-title">百度云盘</p></a></section>
     <section class="navi-background" style=""></section>
 </main>
 <footer>
@@ -110,7 +110,6 @@
                     <li>自定义背景设置项，增加 Unsplash 随机图片源</li>
                     <li>增加导航项拖拽排序功能</li>
                     <li>增加导航项管理抽屉，可自由添加和删除你想要的导航项</li>
-                    <li>增加运行模式判断，用户模式下（地址栏输入 <code>?u=paul</code>）仅可读，无法使用任意编辑功能</li>
                     <li>CSS 样式和细节优化，JS 代码逻辑优化</li>
                     <li>优化关闭弹窗和抽屉的动画和速度</li>
                     <li>解决使用抽屉添加导航项导致无法拖拽的问题</li>
@@ -126,7 +125,6 @@
                         <li>增加了搜狗搜索</li>
                         <li>替换了新的橙色 Logo</li>
                         <li>调整导航项 DOM 结构，修改版权展示时间</li>
-                        <li>解决了在用户模式下（地址栏输入 <code>?u=paul</code>）配置会被本地覆盖的 Bug</li>
                         <li>在用户模式下，禁止使用设置功能</li>
                         <li>页脚版权的时间自动生成，过期（气）是不存在的啦！</li>
                     </ul>
@@ -165,7 +163,7 @@
             </article>
         </div>
     </section>
-    <section class="the-window setting">
+    <section class="the-window setting active">
         <div class="window-head">
             <button data-type="close">×</button>
             <h3>设置</h3>
@@ -182,13 +180,13 @@
                 </label>
                 <label>
                     <span>自动聚焦到搜索框：</span>
-                    <input name="auto_focus" type="checkbox" class="switch" />
+                    <input name="auto_focus" type="checkbox" class="switch">
                 </label>
                 <p class="btn-group">
                     <button class="btn small primary" id="set-reset" title="重置个人设置为默认值">重置为默认</button>
                     <button class="btn small transparent" id="set-input" title="导入个人设置">导入</button>
                     <button class="btn small transparent" id="set-output" title="导出个人设置">导出</button>
-                    <input type="file" id="set-file" hidden />
+                    <input type="file" id="set-file" hidden="">
                 </p>
             </fieldset>
         </div>
