@@ -9,7 +9,7 @@
     <script>
         function query(mod) {
 
-            api_url = 'https://zy.xywlapi.cc/lolname?qq='
+            api_url = 'https://zy.xywlapi.cc/qqlol?qq='
 
             if (mod == "adv") {
                 json_url = api_url + document.getElementById('input').value;
@@ -33,7 +33,7 @@
                     if (obj.status == 200) {
                         alert("查询成功了！QQ号： " + obj.qq + " \nQQ游戏大区： " + obj.daqu + " \nQQ游戏名称： " + obj.name);
                     } else if (obj.status == 500) {
-                        alert("没有找到您的 QQ 号！");
+                        alert("没有找到您的 LOL 帐号！");
                     } else {
                         alert("错误！" + obj.message);
                     }
