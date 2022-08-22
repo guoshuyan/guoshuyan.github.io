@@ -31,7 +31,7 @@
                 $.getJSON(json_url, function (json) {
                     obj = JSON.parse(JSON.stringify(json));
                     if (obj.status == 200) {
-                        alert("查询成功了！QQ号： " + obj.qq + " \nQQ游戏大区： " + obj.daqu + " \nQQ游戏名称： " + obj.name);
+                        alert("查询成功了！\nQQ号： " + obj.qq + " \nQQ游戏大区： " + obj.daqu + " \nQQ游戏名称： " + obj.name);
                     } else if (obj.status == 500) {
                         alert("没有找到您的 LOL 帐号！");
                     } else {

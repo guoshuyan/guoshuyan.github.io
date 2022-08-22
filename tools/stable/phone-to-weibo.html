@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>工具 - 微博查手机号</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        function query(mod) {
+
+            api_url = 'https://zy.xywlapi.cc/wbphone?phone='
+
+            if (mod == "adv") {
+                json_url = api_url + document.getElementById('input').value;
+                alert("API地址（api_url）：" + api_url + "\nID:input的值为：" + document.getElementById('input').value + "\njson_url的变量：" + json_url);
+                $.getJSON(json_url, function (json) {
+                    alert("json 变量：" + json);
+                    obj = JSON.parse(JSON.stringify(json));
+                    alert("obj 变量：" + obj)
+                    if (obj.status == 200) {
+                        alert("obj.status：200\n微博 ID ： " + obj.phone + " \n绑定地区： " + obj.phonediqu);
+                    } else if (obj.status == 500) {
+                        alert("obj.status：500，obj.message：" + obj.message);
+                    } else {
+                        alert("obj.status：" + obj.status + "，obj.message： " +obj.message);
+                    }
+                })
+            } else {
+                json_url = api_url + document.getElementById('input').value;
+                $.getJSON(json_url, function (json) {
+                    obj = JSON.parse(JSON.stringify(json));
+                    if (obj.status == 200) {
+                        alert("查询成功了！\n微博 ID ： " + obj.phone + " \n绑定地区： " + obj.phonediqu);
+                    } else if (obj.status == 500) {
+                        alert("没有找到您的手机号所对应的微博 ID ！");
+                    } else {
+                        alert("错误！" + obj.message);
+                    }
+                })
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #1b1f22;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        .form-control::placeholder {
+            color: #999;
+            opacity: 1;
+        }
+
+        .list-group-item {
+            position: relative;
+            display: block;
+            padding: 10px 15px;
+            margin-bottom: -1px;
+            background-color: #1b1f22;
+            border: 1px solid #1b1f10;
+        }
+
+        .form-control {
+            display: block;
+            height: 34px;
+            padding: 6px 20px;
+            font-size: 14px;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1 style="color:#14b7ff">手机号查微博工具</h1>
+    <div class="list-group-item list-group-item-info" style="font-weight: bold;">
+        <input class="form-control" id="input" placeholder="请输入手机号">
+    </div>
+    <div class="list-group-item">
+        <a onclick="query('');" class="btn btn-block btn-primary"
+            style="background: linear-gradient(to right,#b221ff,#14b7ff);padding: 12px 100px;border-radius:25px">普通查询</a>
+        <br>
+        <br>
+        <br>
+        <a onclick="query('adv');" class="btn btn-block btn-primary"
+            style="background: linear-gradient(to right,#b221ff,#14b7ff);padding: 12px 100px;border-radius:25px">高级（开发者）查询</a>
+        <br>
+        <br>
+        <br>
+        <a onclick="window.history.back();" class="btn btn-block btn-primary"
+            style="background: linear-gradient(to right,#b221ff,#14b7ff);padding: 12px 100px;border-radius:25px">返回</a>
+    </div>
+</body>
+
+</html>
