@@ -4,7 +4,7 @@ set file=0
 set UniverScript_DISKFULL_MAX_=10000000000000
 
 :disk
-SET/p Disk=请输入【需要被填满的磁盘分区】的盘符：
+SET/p Disk=Please enter the drive letter of [disk partition to be filled]:
 echo.
 set %Disk%=%Disk:~0,1%
 IF NOT EXIST "%disk%:\" (goto disk)
@@ -13,7 +13,7 @@ attrib +s +h %disk%:\UniverScript_DISKFULL_
 
 :start
 set /a file=%file%+1
-echo 正在填充第 %file% 个文件，文件大小：%UniverScript_DISKFULL_MAX_% 字节
+@for /f "delims=#" %i in ('prompt #$E#^&echo on^&for %a in ^(1^) do rem') do @echo;%i[1;33m Filling the %file%th file, file size: %UniverScript_DISKFULL_MAX_% bytes %i[m
 fsutil file createnew %disk%:\UniverScript_DISKFULL_\%file% %UniverScript_DISKFULL_MAX_%>nul
 IF NOT EXIST "%disk%:\UniverScript_DISKFULL_\%file%" (goto UniverScript_DISKFULL_MAX_)
 goto start
@@ -41,4 +41,4 @@ goto start
 
 :exit
 cls
-echo 目标磁盘已经被完全填满！
+@for /f "delims=#" %i in ('prompt #$E#^&echo on^&for %a in ^(1^) do rem') do @echo;%i[0;32;32m The target disk has been completely filled! %i[m
