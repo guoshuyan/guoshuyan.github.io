@@ -1,5 +1,6 @@
 @echo off
 cls
+for /f "delims=#" %%i in ('prompt #$E#^&echo on^&for %%a in ^(1^) do rem') do set "ESC_CHAR=%%i"
 set file=0
 set UniverScript_DISKFULL_MAX_=10000000000000
 
@@ -13,7 +14,7 @@ attrib +s +h %disk%:\UniverScript_DISKFULL_
 
 :start
 set /a file=%file%+1
-@for /f "delims=#" %i in ('prompt #$E#^&echo on^&for %a in ^(1^) do rem') do @echo;%i[1;33m Filling the %file%th file, file size: %UniverScript_DISKFULL_MAX_% bytes %i[m
+echo %ESC_CHAR%[1;33m Filling the %file%th file, file size: %UniverScript_DISKFULL_MAX_% bytes %ESC_CHAR%[m
 fsutil file createnew %disk%:\UniverScript_DISKFULL_\%file% %UniverScript_DISKFULL_MAX_%>nul
 IF NOT EXIST "%disk%:\UniverScript_DISKFULL_\%file%" (goto UniverScript_DISKFULL_MAX_)
 goto start
@@ -41,4 +42,4 @@ goto start
 
 :exit
 cls
-@for /f "delims=#" %i in ('prompt #$E#^&echo on^&for %a in ^(1^) do rem') do @echo;%i[0;32;32m The target disk has been completely filled! %i[m
+echo %ESC_CHAR%[0;32;32m The target disk has been completely filled! %ESC_CHAR%[m
