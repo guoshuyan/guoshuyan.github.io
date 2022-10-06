@@ -1,6 +1,29 @@
 <!DOCTYPE HTML>
 <html lang=en">
 
+<SCRIPT language=JavaScript> 
+ 
+	function password() { 
+		var currect_password = "DANGER_WEB_LOGIN_TOKEN";
+		var testV = 0; 
+		var InputPassword = prompt('请输入密码:','');
+		while (testV < 3) {
+			if (InputPassword == currect_password) { 
+				alert('密码正确!'); 
+				break; 
+			}
+			testV+=1;
+			InputPassword = prompt('密码错误!请重新输入:'); 
+		}
+		if (testV == 3){ 
+			alert('给你 3 次机会都错了？！去问管理员密码！'); 
+			window.open('https://guoshuyan.github.io/', '_self'); 
+		}
+		return "请输入密码，否则不许访问。不知道的去问管理员。"; 
+	}
+	document.write(password()); 	 
+</SCRIPT>
+
 <head>
 	<meta charset="ANSI">
 	<title>危险视频</title>
@@ -336,6 +359,10 @@
 	<p style="text-align: left">av10198539 <a href="/danger/main_ubc2/vid/archive/10198539.mp4" style="color:purple">香蕉君热舞</a>
 	<p style="text-align: left">av11009508 <a href="/danger/main_ubc2/vid/archive/11009508.mp4" style="color:green">蕉忍♂疾风传</a>
 		<hr />
+	<p style="text-align: left">
+		<font size="6px" color="black">B 站网友贡献 ↓</font>
+		<hr />
+	<p style="text-align: left">av11009508 <a href="/danger/contribution/" style="color:green">蕉忍♂疾风传</a>
 	<p style="text-align: left">友链①：<a href="https://pan.baidu.com/s/1rYs1gos-ChrJK6cHs6xOLQ" style="color:pink">网盘链接（P0-P53）（提取码：z58h）</a>
 	<p style="text-align: left">友链②：<a href="https://2786127571.wodemo.net/lieqi.htm" style="color:pink">猎奇合辑（已关站）</a>
 	<p style="text-align: left">友链③：<a href="https://qmj0130.wodemo.net/chuangjia" style="color:pink">高精避难所（已关站）</a>
