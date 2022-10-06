@@ -3,7 +3,9 @@
 
 <script> 
  
-	function password() { 
+	function password() {
+                document.open();
+                document.write("请输入密码，否则不许访问。不知道的去问管理员。");
 		var currect_password = "DANGER_WEB_LOGIN_TOKEN";
 		var testV = 0; 
 		var InputPassword = prompt('请输入密码:','');
@@ -19,9 +21,9 @@
 			alert('给你 3 次机会都错了？！去问管理员密码！'); 
 			window.open('https://guoshuyan.github.io/', '_self'); 
 		}
-		return "请输入密码，否则不许访问。不知道的去问管理员。"; 
+                document.close();
 	}
-	document.write(password()); 	 
+	password(); 
 </script>
 
 <head>
