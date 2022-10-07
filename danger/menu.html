@@ -1,17 +1,35 @@
 <!DOCTYPE HTML>
 <html lang=en">
 
-<script> 
- 
+<script>
+	function getCookie(cname)
+	{
+  		var name = cname + "=";
+  		var ca = document.cookie.split(';');
+  		for(var i=0; i<ca.length; i++) 
+  		{
+    		var c = ca[i].trim();
+    		if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+  		}
+  		return "";
+	}
+	function setCookie(cname,cvalue,exdays)
+	{
+  		var d = new Date();
+  		d.setTime(d.getTime()+(exdays*24*60*60*1000));
+  		var expires = "expires="+d.toGMTString();
+  		document.cookie = cname + "=" + cvalue + "; " + expires;
+	}
 	function password() {
-                document.open();
-                document.write("请输入密码，否则不许访问。不知道的去问管理员。");
+        document.open();
+        document.write("请输入密码，否则不许访问。不知道的去问管理员。");
 		var currect_password = "DANGER_WEB_LOGIN_TOKEN";
 		var testV = 0; 
 		var InputPassword = prompt('请输入密码:','');
 		while (testV < 3) {
 			if (InputPassword == currect_password) { 
-				alert('密码正确!'); 
+				alert('密码正确!');
+				setCookie("PASSWORD_INPUT_FINISH", "shuyan", 2); 
 				break; 
 			}
 			testV+=1;
@@ -21,9 +39,11 @@
 			alert('给你 3 次机会都错了？！去问管理员密码！'); 
 			window.open('https://guoshuyan.github.io/', '_self'); 
 		}
-                document.close();
+        document.close();
 	}
-	password(); 
+	if (getCookie("PASSWORD_INPUT_FINISH") == ""){
+		password(); 
+	}
 </script>
 
 <head>
@@ -364,7 +384,7 @@
 	<p style="text-align: left">
 		<font size="6px" color="black">B 站网友贡献 ↓</font>
 	<hr />
-	<p style="text-align: left">以下内容由 <a href="https://space.bilibili.com/538123254" style="color:yellow">@柒柒在线追剧</a> 提供</p>
+	<p style="text-align: left">以下内容由 <a href="https://space.bilibili.com/538123254" style="color:pink">@柒柒在线追剧</a> 提供</p>
 	<p style="text-align: left"><a href="/danger/contribution/zbadr001.mp4" style="color:yellow">世界上最不安的人 - 1 </a>
 	<p style="text-align: left"><a href="/danger/contribution/zbadr002.mp4" style="color:yellow">世界上最不安的人 - 2 </a>
 	<p style="text-align: left"><a href="/danger/contribution/zbadr003-1.mp4" style="color:yellow">世界上最不安的人 - 3 - 1</a>
