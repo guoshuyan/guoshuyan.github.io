@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网站暂时关站声明</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .modal {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 500px;
+            width: 80%;
+        }
+        .modal h2 {
+            color: #ff6a00;
+            margin-bottom: 20px;
+        }
+        .modal p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay" id="shutdownOverlay">
+        <div class="modal">
+            <h2>网站暂时关站通知</h2>
+            <p>尊敬的用户：</p>
+            <p>由于国家相关政策要求，本网站暂时关闭。给您带来的不便，我们深表歉意。恢复时间将另行通知，请您关注相关信息。</p>
+            <p>感谢您一直以来的支持与理解。</p>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            document.getElementById('shutdownOverlay').style.display = 'flex';
+        });
+    </script>
+</body>
+</html>
