@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<!-- hello!这个网站是给喝肉纪念用的哦～By Guoshuyan 20250810 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>永恒的追思 - Herobrine_CN</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f0f15 0%, #1d1d28 100%);
+            color: #e0e0e0;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            background: rgba(0, 0, 0, 0.7);
+            border-bottom: 1px solid #444;
+            margin-bottom: 40px;
+            overflow: hidden;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23222" stroke-width="0.5"/></svg>');
+        }
+        
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(40, 30, 60, 0.3) 0%, rgba(0, 0, 0, 0.7) 80%);
+            z-index: -1;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 0 15px rgba(100, 150, 255, 0.5);
+            position: relative;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: #aaa;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        /* 照片区域 */
+        .photo-section {
+            text-align: center;
+            padding: 50px 0;
+            margin: 40px 0;
+            background: rgba(20, 15, 30, 0.6);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            position: relative;
+            border: 1px solid rgba(100, 80, 150, 0.3);
+        }
+        
+        .photo-frame {
+            display: inline-block;
+            padding: 15px;
+            background: #111;
+            border: 1px solid #444;
+            box-shadow: 0 0 30px rgba(70, 50, 120, 0.5);
+            margin: 20px auto;
+            position: relative;
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-frame:hover {
+            transform: scale(1.02);
+        }
+        
+        .memorial-photo {
+            width: 300px;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(60%) brightness(0.8);
+            transition: filter 0.5s ease;
+            border-radius: 2px;
+        }
+        
+        .memorial-photo:hover {
+            filter: grayscale(30%) brightness(1);
+        }
+        
+        .photo-label {
+            margin-top: 25px;
+            font-size: 1.1rem;
+            color: #999;
+            font-style: italic;
+        }
+        
+        /* 生平介绍 */
+        .life-section {
+            background: rgba(25, 20, 35, 0.7);
+            padding: 50px;
+            margin: 50px 0;
+            border-left: 3px solid #5a4a8a;
+            position: relative;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            color: #ddd;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #7a6aa5, transparent);
+        }
+        
+        .life-content {
+            font-size: 1.1rem;
+            color: #ccc;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: justify;
+        }
+        
+        .life-content p {
+            margin-bottom: 25px;
+            text-indent: 2em;
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            color: #a396cf;
+            font-weight: 500;
+        }
+        
+        /* 服务器演化史 */
+        .evolution-section {
+            background: rgba(25, 20, 35, 0.7);
+            padding: 50px;
+            margin: 50px 0;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(100, 80, 150, 0.3);
+        }
+        
+        .phase-card {
+            background: rgba(35, 30, 50, 0.9);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid #4a3d75;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .phase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(70, 50, 120, 0.4);
+        }
+        
+        .phase-title {
+            color: #d0c5f0;
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .period {
+            color: #a396cf;
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .phase-content p {
+            color: #bbb;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        /* 图片展示区 */
+        .gallery-section {
+            margin: 70px 0;
+            text-align: center;
+        }
+        
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            background: rgba(35, 30, 50, 0.7);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #3a2d5a, #5a4a8a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 2rem;
+        }
+        .gallery-img img {
+        	width: 100%;
+            height: 100%;
+        	object-fit: contain;
+        }
+        
+        .gallery-caption {
+            padding: 15px;
+            font-size: 0.95rem;
+            color: #bbb;
+            text-align: center;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(30, 25, 45, 0.8);
+        }
+        
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #333;
+            margin-top: 50px;
+            background: rgba(15, 10, 25, 0.8);
+        }
+        
+        .quote {
+            font-style: italic;
+            max-width: 600px;
+            margin: 20px auto;
+            color: #a396cf;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 900px) {
+            h1 {
+                font-size: 2.8rem;
+                letter-spacing: 4px;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .memorial-photo {
+                width: 250px;
+                height: 350px;
+            }
+            
+            .life-section, .evolution-section {
+                padding: 30px 20px;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .memorial-photo {
+                width: 220px;
+                height: 300px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .gallery-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animated {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        
+        /* 蜡烛效果 */
+        .candle {
+            position: fixed;
+            width: 20px;
+            height: 60px;
+            background: linear-gradient(to right, #333, #222, #333);
+            border-radius: 3px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+        
+        .flame {
+            position: absolute;
+            width: 12px;
+            height: 25px;
+            background: #ffec8f;
+            border-radius: 50% 50% 20% 20%;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px #ff9, 0 0 40px #ff6;
+            animation: flicker 1.5s infinite alternate;
+            filter: blur(1px);
+        }
+        
+        @keyframes flicker {
+            0%, 100% { 
+                transform: translateX(-50%) scale(1); 
+                height: 25px;
+                opacity: 0.9; 
+            }
+            25% { 
+                transform: translateX(-50%) scale(1.1) translateX(2px); 
+                height: 28px;
+            }
+            50% { 
+                transform: translateX(-50%) scale(0.95) translateX(-2px); 
+                height: 22px;
+            }
+            75% { 
+                transform: translateX(-50%) scale(1.05); 
+                height: 26px;
+            }
+        }
+        
+        .candle-1 {
+            top: 20%;
+            left: 10%;
+        }
+        
+        .candle-2 {
+            top: 15%;
+            right: 10%;
+        }
+        
+        .candle-3 {
+            bottom: 20%;
+            left: 15%;
+        }
+        
+        .candle-4 {
+            bottom: 15%;
+            right: 15%;
+        }
+        
+        /* 滚动条美化 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(20, 15, 30, 0.8);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #5a4a8a;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7a6aa5;
+        }
+    </style>
+</head>
+<body>
+    <!-- 蜡烛 -->
+    <div class="candle candle-1">
+        <div class="flame"></div>
+    </div>
+    <div class="candle candle-2">
+        <div class="flame"></div>
+    </div>
+    <div class="candle candle-3">
+        <div class="flame"></div>
+    </div>
+    <div class="candle candle-4">
+        <div class="flame"></div>
+    </div>
+
+    <header>
+        <div class="header-overlay"></div>
+        <div class="container">
+            <h1 class="animated">永恒的追思</h1>
+            <p class="subtitle animated delay-1">纪念Herobrine_CN (2021-2025)</p>
+            <p class="subtitle animated delay-2">虽未谋面，却似故人</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="photo-section animated delay-1">
+            <div class="photo-frame">
+                <img src="https://q.qlogo.cn/headimg_dl?dst_uin=3553468943&spec=640&img_type=jpg" alt="纪念照片" class="memorial-photo">
+            </div>
+            <p class="photo-label">Herobrine_CN (2021-2025)</p>
+            <p class="photo-label">硫钫百世服务器服主 · 反物质工作室构建层</p>
+        </section>
+
+        <section class="life-section animated delay-2">
+            <h2 class="section-title">人物简介</h2>
+            <div class="life-content">
+                <p><span class="highlight">Herobrine_CN</span>，基岩版名为HerobrineCHN，别名喝肉、hero等，担任反物质工作室的构建层，硫钫百世服务器服主。</p>
+                
+                <p>他热爱生活，目前就读于高三，始终为服务器和工作室的建设贡献自己的力量。在技术领域，他擅长服务器架构、插件开发和版本兼容性处理，为Fr2S服务器的发展奠定了坚实基础。</p>
+                
+                <p>我们在硫钫百世服务器群，因对技术的共同热爱而结为好友。四年来，我们虽未谋面，却通过无数次的技术讨论、深夜聊天建立了深厚的友谊。</p>
+                
+                <p>2025年8月10日，他开学离开了我们，留下的是群内朋友们的无限思念，以及网络世界中那些他曾经帮助过的人们的感恩与怀念。</p>
+            </div>
+        </section>
+
+        <section class="evolution-section animated delay-1">
+            <h2 class="section-title">Fr2S服务器演化史</h2>
+            
+            <div class="phase-card">
+                <h3 class="phase-title"><i class="fas fa-cube"></i> 初创时期</h3>
+                <span class="period">2021/02/11 - 2021/12/12</span>
+                <div class="phase-content">
+                    <p>基岩版联机时期，这是Fr2S服务器最初的形态，奠定了社区的基础。</p>
+                </div>
+            </div>
+            
+            <div class="phase-card">
+                <h3 class="phase-title"><i class="fas fa-code-branch"></i> 转型时期</h3>
+                <span class="period">2021/12/12 - 2022/02/17</span>
+                <div class="phase-content">
+                    <p>从基岩版过渡到Java版联机，技术架构开始转变，为未来发展奠定基础。</p>
+                </div>
+            </div>
+            
+            <div class="phase-card">
+                <h3 class="phase-title"><i class="fas fa-plug"></i> 技术突破</h3>
+                <span class="period">2022/02/17 - 2022/04/02</span>
+                <div class="phase-content">
+                    <p>首次打通基岩和Java版连接，实现了跨平台兼容，技术能力显著提升。</p>
+                </div>
+            </div>
+            
+            <div class="phase-card">
+                <h3 class="phase-title"><i class="fas fa-server"></i> 首次开服</h3>
+                <span class="period">2022/06/30 - 2022/08/17</span>
+                <div class="phase-content">
+                    <p>Fr2S服务器正式上线，接近原版体验，开启了服务器运营的新篇章。</p>
+                </div>
+            </div>
+            
+            <div class="phase-card">
+                <h3 class="phase-title"><i class="fas fa-globe"></i> 多元化发展</h3>
+                <span class="period">2022/08/17 - 2022/12/31</span>
+                <div class="phase-content">
+                    <p>安装多世界插件，服务器开始多元化发展，功能更加丰富。</p>
+                </div>
+            </div>
+            
+            <div class="phase-card">
+                <h3 class="phase-title"><i class="fas fa-users"></i> 鼎盛时期</h3>
+                <span class="period">2023/01/01 - 2023/02/15</span>
+                <div class="phase-content">
+                    <p>服务器内容更丰富，玩家数量达到最高峰，社区活跃度空前高涨。</p>
+                </div>
+            </div>
+            
+            <div class="phase-card">
+                <h3 class="phase-title"><i class="fas fa-tachometer-alt"></i> 技术瓶颈</h3>
+                <span class="period">2023/02/15 - 2023/6/12</span>
+                <div class="phase-content">
+                    <p>服务器多元化进程加速，但技术限制也逐渐显露，开始遇到瓶颈。</p>
+                </div>
+            </div>
+            
+            <div class="phase-card">
+                <h3 class="phase-title"><i class="fas fa-exclamation-triangle"></i> 发展极限</h3>
+                <span class="period">2023/6/12 - 2023/07/18</span>
+                <div class="phase-content">
+                    <p>服务器发展到极限，多世界插件限制过多，bug频发，面临重大挑战。</p>
+                </div>
+            </div>
+            
+            <div class="phase-card">
+                <h3 class="phase-title"><i class="fas fa-sync-alt"></i> 重构转型</h3>
+                <span class="period">2023/07/18 - 2024/02/15</span>
+                <div class="phase-content">
+                    <p>向群组服转移，服务器大规模重构，是工作量最高的技术转型期。</p>
+                </div>
+            </div>
+            
+            <div class="phase-card">
+                <h3 class="phase-title"><i class="fas fa-rocket"></i> 重新启航</h3>
+                <span class="period">2025/01/10 - 2025/04/29</span>
+                <div class="phase-content">
+                    <p>服务器满血复活，主城翻新，进入新的发展阶段。</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 图片展示区 -->
+        <section class="gallery-section animated delay-2">
+            <h2 class="section-title">珍贵时刻</h2>
+            <p class="subtitle">服务器发展历程中的重要瞬间</p>
+            
+            <div class="gallery-container">
+    <div class="gallery-item">
+        <div class="gallery-img"><img src="https://blog.345690.xyz/images/5-20250808-Fr2s-Classic_v0_2_online_survival.png" alt="早期联机生存"></div>
+        <div class="gallery-caption">最早期联机玩生存</div>
+    </div>
+    
+    <div class="gallery-item">
+        <div class="gallery-img"><img src="https://blog.345690.xyz/images/7-20250808-Fr2s-Classic_v0_2_survival_with_ABKQPO.png" alt="幻方服生电时期"></div>
+        <div class="gallery-caption">幻方服生电时期</div>
+    </div>
+    
+    <div class="gallery-item">
+        <div class="gallery-img"><img src="https://blog.345690.xyz/images/9-20250808-Fr2s-Classic_v0_2_online_creative.png" alt="基岩版创造服"></div>
+        <div class="gallery-caption">穿插着玩基岩，此处玩的是创造服</div>
+    </div>
+    
+    <div class="gallery-item">
+        <div class="gallery-img"><img src="https://blog.345690.xyz/images/13-20250808-Fr2s-Classic_v0_4_survival.png" alt="服务器合照"></div>
+        <div class="gallery-caption">服务器成员合照</div>
+    </div>
+    
+    <div class="gallery-item">
+        <div class="gallery-img"><img src="https://blog.345690.xyz/images/14-20250808-Fr2s-Classic_v1_1_happy_birthday_for_maomao_in_creative_world.png" alt="猫猫生日"></div>
+        <div class="gallery-caption">2022年9月4日在创造世界给猫猫过生日</div>
+    </div>
+    
+    <div class="gallery-item">
+        <div class="gallery-img"><img src="https://blog.345690.xyz/images/15-20250808-Fr2s-Classic_v1_2_best_record.png" alt="顶尖时刻"></div>
+        <div class="gallery-caption">2023年1月5日顶尖时刻</div>
+    </div>
+    
+    <div class="gallery-item">
+        <div class="gallery-img"><img src="https://blog.345690.xyz/images/23-20250809-Fr2s-Classic_v1_4_celebrate_server_one_year_anniversary.png" alt="一周年庆祝"></div>
+        <div class="gallery-caption">2023年6月30日庆祝服务器一周年</div>
+    </div>
+    
+    <div class="gallery-item">
+        <div class="gallery-img"><img src="https://blog.345690.xyz/images/27-20250809-Fr2s-Transitional_v0_1_online_survival.png" alt="生电历史影像"></div>
+        <div class="gallery-caption">玩生电的历史影像</div>
+    </div>
+    
+    <div class="gallery-item">
+        <div class="gallery-img"><img src="https://blog.345690.xyz/images/30-20250809-Fr2s-Transitional_v0_2_ready_to_revive_the_server.png" alt="齐焯加入"></div>
+        <div class="gallery-caption">2024年11月19日齐焯加入，并且打算一同开服</div>
+    </div>
+    
+    <div class="gallery-item">
+        <div class="gallery-img"><img src="https://blog.345690.xyz/images/34-20250809-Fr2s-Transitional_v1_0_second_version_main_city_under_construction_by_ValeGR.png" alt="主城翻新"></div>
+        <div class="gallery-caption">ValeGR翻新主城</div>
+    </div>
+    
+    <div class="gallery-item">
+        <div class="gallery-img"><img src="https://blog.345690.xyz/images/3-20250329-ValeGR-with-Guoshuyan.png" alt="ValeGR小故事"></div>
+        <div class="gallery-caption">编写者和ValeGR的小故事(整活)</div>
+    </div>
+</div>
+        </section>
+    </div>
+
+    <footer class="animated delay-3">
+        <div class="container">
+            <p class="quote">"技术或许会过时，代码或许会遗忘，但那些深夜调试服务器的时光，那些共同解决bug的欢笑，那些因技术而结缘的友谊，将永远在数字世界中闪耀。"</p>
+            <p>纪念网站 | 创建于2025年8月10日</p>
+            <p>献给Herobrine_CN，感谢四年的陪伴与交流</p>
+        </div>
+    </footer>
+
+    <script>
+        // 页面加载后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 动画触发
+            const elements = document.querySelectorAll('.animated');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            elements.forEach(element => {
+                element.style.opacity = 0;
+                observer.observe(element);
+            });
+            
+            // 蜡烛位置调整
+            function adjustCandles() {
+                const candles = document.querySelectorAll('.candle');
+                const headerHeight = document.querySelector('header').offsetHeight;
+                
+                candles.forEach((candle, index) => {
+                    // 移动端减少蜡烛数量
+                    if (window.innerWidth < 900 && index > 1) {
+                        candle.style.display = 'none';
+                    } else {
+                        candle.style.display = 'block';
+                    }
+                });
+            }
+            
+            // 初始化蜡烛位置
+            adjustCandles();
+            window.addEventListener('resize', adjustCandles);
+            
+            // 蜡烛动画增强
+            setInterval(() => {
+                const flames = document.querySelectorAll('.flame');
+                flames.forEach(flame => {
+                    flame.style.height = (22 + Math.random() * 8) + 'px';
+                });
+            }, 300);
+        });
+    </script>
+</body>
+</html>
