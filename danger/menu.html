@@ -3,7 +3,7 @@
 <head>
 	<meta charset="ANSI">
 	<title>危险视频</title>
-	<meta http-equiv="refresh" content="5;url=https://guoshuyan-web.github.io/danger/close.html">
+	
 	<script>
        		var _hmt = _hmt || [];
         	(function() {
@@ -18,49 +18,7 @@
 <script>
 var vConsole = new window.VConsole();
 </script>
-	<script>
-function setCookie(cname,cvalue,exdays)
-{
-  var d = new Date();
-  d.setTime(d.getTime()+(exdays*24*60*60*1000));
-  var expires = "expires="+d.toGMTString();
-  document.cookie = cname + "=" + cvalue + "; " + expires;
-}
-
-function getCookie(cname)
-{
-  var name = cname + "=";
-  var ca = document.cookie.split(';');
-  for(var i=0; i<ca.length; i++) 
-  {
-    var c = ca[i].trim();
-    if (c.indexOf(name)==0) return c.substring(name.length,c.length);
-  }
-  return "未获取到";
-}
-var verify = getCookie("verify");
-if (verify == "未获取到"){
-		if (md5(prompt("1.池田大_")) == "4cde0dec60ada4915bb092f71a6ceb8b"){
-			if (md5(prompt("2.久本__")) == "dded4187ec3628b04bf19e80b3058245"){
-				if (md5(prompt("3.高技术力 后面一般会带哪4个字母")) == "d61155f6f6120c0f17546b5311b08f9e"){
-					if (md5(prompt("(重要问题) 4. 创价学会音mad选曲如果是東方project里的，那么一般会带有什么标签（是東、頭 而非 东、头）？")) == "9d1efad6753e1317a95a44d0dad93faf"){
-						if (md5(prompt("5. hrhr(高等精神病) 的危险度是 ___ （数字）")) == "eccbc87e4b5ce2fe28308fd9f2a7baf3"){
-							if (confirm("回答完毕！你确定你可以接受里面的视频吗？如果不能，请点击取消，如果可以，请点击确定")){
-								alert("确认完毕，进去吧。");
-								verify = "SC_SUCC"; // 说实话，你都能翻到这里了，为什么不直接把所有文件下载下来慢慢欣赏呢（狗头）
-								setCookie("verify", "SC_SUCC", 3650);
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-		if (verify == "未获取到"){
-			alert("回答错误/已取消！");
-			window.location.href = "/index.html";
-		}
-	</script>
+	
 </head>
 
 <body bgcolor="#87CEFA">
