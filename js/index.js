@@ -13,6 +13,7 @@ function browerInfo(openMode){
 		console.log("_top - URL替换任何可加载的框架集");
 	}
 	else{
-		window.open("https:/guoshuyan.github.io/brower_info.html", openMode)
+		window.open("/brower_info.html", openMode)
 	}
 }
+
