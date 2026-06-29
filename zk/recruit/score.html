@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>河南省普通高中招生考生服务平台</title>
+    <meta name="keywords" />
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1343086_71xad67p9b.css" type="text/css" />
+    <link href="https://gzzs.jyt.henan.gov.cn/zk/layer/theme/default/layer.css" rel="stylesheet" />
+    <link href="https://gzzs.jyt.henan.gov.cn/zk/css/site.min.css" rel="stylesheet" />
+    <link href="https://gzzs.jyt.henan.gov.cn/zk/App_Themes/Default/user-default.min.css" rel="stylesheet" />
+    <link href="https://gzzs.jyt.henan.gov.cn/zk/App_Themes/Default/form.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            background: none;
+        }
+        #form1 {
+            width: auto;
+        }
+
+        /* ========== 设置弹窗样式 ========== */
+        #settingsModalOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 99999;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        #settingsModalOverlay.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 30px 10px 60px 10px;
+        }
+        #settingsModal {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+            width: 100%;
+            max-width: 720px;
+            position: relative;
+            overflow: hidden;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-40px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        #settingsModal .modal-header {
+            background: linear-gradient(135deg, #4a6cf7 0%, #3b5de7 100%);
+            color: #fff;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 12px 12px 0 0;
+        }
+        #settingsModal .modal-header h2 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        #settingsModal .modal-header .close-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #fff;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            text-align: center;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #settingsModal .modal-header .close-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: rotate(90deg);
+        }
+        #settingsModal .modal-body {
+            padding: 20px 24px;
+            max-height: 62vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        #settingsModal .modal-body::-webkit-scrollbar {
+            width: 6px;
+        }
+        #settingsModal .modal-body::-webkit-scrollbar-thumb {
+            background: #c1c9d6;
+            border-radius: 3px;
+        }
+        #settingsModal .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin: 0 0 14px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eef2f7;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        #settingsModal .section-title i {
+            color: #4a6cf7;
+            font-style: normal;
+            font-size: 18px;
+        }
+        #settingsModal .form-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        #settingsModal .form-group {
+            flex: 1;
+            min-width: 180px;
+            display: flex;
+            flex-direction: column;
+        }
+        #settingsModal .form-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 4px;
+            letter-spacing: 0.3px;
+        }
+        #settingsModal .form-group input,
+        #settingsModal .form-group select {
+            padding: 9px 12px;
+            border: 2px solid #e0e5ec;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.2s;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+            background: #fafbfc;
+            color: #333;
+        }
+        #settingsModal .form-group input:focus,
+        #settingsModal .form-group select:focus {
+            outline: none;
+            border-color: #4a6cf7;
+            box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+            background: #fff;
+        }
+        #settingsModal .form-group input[type="color"] {
+            padding: 4px 8px;
+            height: 40px;
+            cursor: pointer;
+            min-width: 80px;
+            width: 100%;
+            max-width: 120px;
+        }
+        #settingsModal .color-row {
+            display: flex;
+            gap: 16px;
+            align-items: flex-end;
+            flex-wrap: wrap;
+        }
+        #settingsModal .color-row .form-group:first-child {
+            flex: 2;
+            min-width: 280px;
+        }
+        #settingsModal .color-row .form-group:last-child {
+            flex: 0 0 auto;
+            min-width: 100px;
+        }
+        #settingsModal .modal-footer {
+            padding: 16px 24px;
+            background: #f8fafc;
+            border-top: 1px solid #eef2f7;
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            border-radius: 0 0 12px 12px;
+        }
+        #settingsModal .btn {
+            line-height: 0px;
+            padding: 20px 22px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+        }
+        #settingsModal .btn-save {
+            background: linear-gradient(135deg, #4a6cf7 0%, #3b5de7 100%);
+            color: #fff;
+        }
+        #settingsModal .btn-save:hover {
+            background: linear-gradient(135deg, #3b5de7 0%, #2b4dd4 100%);
+            box-shadow: 0 4px 14px rgba(59, 93, 231, 0.4);
+            transform: translateY(-1px);
+        }
+        #settingsModal .btn-reset {
+            background: #fff;
+            color: #e67e22;
+            border: 2px solid #e67e22;
+        }
+        #settingsModal .btn-reset:hover {
+            background: #fef9f3;
+            border-color: #d35400;
+            color: #d35400;
+        }
+        #settingsModal .btn-close-modal {
+            background: #fff;
+            color: #666;
+            border: 2px solid #ddd;
+        }
+        #settingsModal .btn-close-modal:hover {
+            background: #f5f5f5;
+            border-color: #bbb;
+        }
+        #settingsModal .btn-auto-calc {
+            background: #fff;
+            color: #4a6cf7;
+            border: 2px solid #4a6cf7;
+            padding: 8px 14px;
+            font-size: 12px;
+            white-space: nowrap;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-weight: 600;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+        }
+        #settingsModal .btn-auto-calc:hover {
+            background: #4a6cf7;
+            color: #fff;
+        }
+        #settingsModal .total-row {
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+        }
+        #settingsModal .total-row .form-group {
+            flex: 1;
+            min-width: 140px;
+        }
+        #settingsModal .total-row .btn-auto-calc {
+            margin-bottom: 0;
+            align-self: flex-end;
+            position: relative;
+            top: -4px;
+        }
+        .section-spacer {
+            height: 10px;
+        }
+        @media (max-width: 600px) {
+            #settingsModal .form-group {
+                min-width: 100%;
+            }
+            #settingsModal .form-row {
+                gap: 8px;
+            }
+            #settingsModal .modal-body {
+                max-height: 50vh;
+                padding: 14px 12px;
+            }
+            #settingsModal .modal-footer {
+                padding: 12px;
+                gap: 8px;
+            }
+            #settingsModal .btn {
+                padding: 8px 14px;
+                font-size: 13px;
+            }
+            #settingsModalOverlay.active {
+                padding: 10px 4px 40px 4px;
+            }
+            #settingsModal {
+                border-radius: 8px;
+            }
+            #settingsModal .modal-header {
+                padding: 14px 16px;
+                border-radius: 8px 8px 0 0;
+            }
+            #settingsModal .modal-header h2 {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="OutDate.aspx?type=06" id="form1" class="usersite" enctype="multipart/form-data">
+        <div class="aspNetHidden">
+            <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTY1ODY5MTk4NGRkYMnbCvkEwdv1TzIsXLXkLXSOsQk=" />
+        </div>
+        <div class="aspNetHidden">
+            <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="9DA2EA60" />
+        </div>
+        <script src="https://gzzs.jyt.henan.gov.cn/zk/js/jquery.min.js"></script>
+        <script src="https://gzzs.jyt.henan.gov.cn/zk/layer/layer.js"></script>
+        <script src="https://gzzs.jyt.henan.gov.cn/zk/js/site.js"></script>
+        <div class="logobody">
+            <div id="top" class="content">
+                <h1>河南省普通高中招生考生服务平台</h1>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div class="topbaseinfo">
+                    <div class="basescontent content" id="basescontent">
+                        <table class="divtable">
+                            <tr>
+                                <td class="basephoto" id="basephoto" rowspan="5" title="点击查看照片">
+                                    <div id="showph"><span>点击查看考生照片</span></div>
+                                    <span>考生照片</span>
+                                    <script>
+                                        function Showphoto() {
+                                            var phurl = "https://gzzs.jyt.henan.gov.cn/zk/recruit/";
+                                            var htm = "<img  src='" + phurl + "photo.ashx' /><span>考生照片</span>";
+                                            $("#basephoto").html(htm);
+                                        }
+                                    </script>
+                                </td>
+                                <td class="w1 lbl">
+                                    <span id="info_examNo">准考证号：260781100898</span>
+                                </td>
+                                <td class="w2">
+                                    <span id="info_category">考生类别： 应届毕业生</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="lbl">
+                                    <span id="info_name">姓&nbsp;&nbsp;&nbsp; &nbsp;名： 郭书岩</span>
+                                </td>
+                                <td class="w2">
+                                    <span id="info_gender">性&nbsp;&nbsp;&nbsp;&nbsp;  别： 男</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="lbl">
+                                    <span id="info_idCard">身份证号：410781201105100053</span>
+                                </td>
+                                <td class="w2">
+                                    <span id="info_nation">民&nbsp;&nbsp;&nbsp; &nbsp; 族： 汉族</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="lbl">
+                                    <span id="info_politics">政治面貌： 群众</span>
+                                </td>
+                                <td class="w2">
+                                    <span id="info_birthday">出生日期： 2011-05-10</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="lbl" colspan="2">
+                                    <span><a href="https://gzzs.jyt.henan.gov.cn/zk/recruit/view.aspx" class="blue" style="text-decoration:underline">查看更多信息></a> </span>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="notice">
+                            <p>公告</p>
+                            <div class="noticelist">
+                                <ul></ul>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="toplog">
+                    <ul>
+                        <li style="background-color:#eb587c"><a href="https://gzzs.jyt.henan.gov.cn/zk/user/ChangePwd.aspx"><i class="iconfont icon-password"></i><span>修改密码</span></a></li>
+                        <li style="background-color:#b073ca"><a href="https://gzzs.jyt.henan.gov.cn/zk/user/ChangeEmail.aspx"><i class="iconfont icon-email"></i><span>修改邮箱</span></a></li>
+                        <li style="background-color: deepskyblue"><a href="https://gzzs.jyt.henan.gov.cn/zk/user/ChangeMobile.aspx"><i class="iconfont icon-mobile-phone"></i><span>修改手机</span></a></li>
+                        <!-- 设置链接改为弹窗触发 -->
+                        <li style="background-color:#a4c74d"><a href="javascript:void(0)" id="settingsLink"><i class="iconfont icon-set"></i><span>设置</span></a></li>
+                        <li style="background-color:cornflowerblue"><a href="https://gzzs.jyt.henan.gov.cn/zk/logout.aspx"><i class="iconfont icon-shut-down-line"></i><span>退出</span></a></li>
+                    </ul>
+                </div>
+                <div class="content contenthy">
+                    <div class="gongzuot">
+                        <a href="https://gzzs.jyt.henan.gov.cn/zk/user/default.aspx"><p>考生工作台</p></a>
+                        <ul id="gongzuotul">
+                            <li><a href="https://gzzs.jyt.henan.gov.cn/zk/recruit/view.aspx" title="时间安排按各地市中招文件要求进行"><i class="iconfont icon-xinxicaiji"></i><span>完善考生信息</span></a></li>
+                            <li><a href="https://gzzs.jyt.henan.gov.cn/zk/recruit/care.aspx" title="时间安排按各地市中招文件要求进行"><i class="iconfont">&#xe601;</i><span>中招报名</span></a></li>
+                            <li><a href="https://gzzs.jyt.henan.gov.cn/zk/recruit/vol/" title="时间安排按各地市中招文件要求进行"><i class="iconfont icon-school" style="font-size: 23px;"></i><span>普通高中志愿填报</span></a></li>
+                            <li><a href="https://gzzs.jyt.henan.gov.cn/zk/recruit/exam.aspx"><i class="iconfont" style="font-size: 23px;">&#xe61d;</i><span>考场查询</span></a></li>
+                            <li class="li_ac"><a href="https://gzzs.jyt.henan.gov.cn/zk/recruit/score.aspx"><i class="iconfont icon-chengji" style="font-size: 23px;"></i><span>中招成绩查询</span></a></li>
+                            <li><a href="https://gzzs.jyt.henan.gov.cn/zk/recruit/enroll.aspx"><i class="iconfont">&#xe691;</i><span>录取结果信息</span></a></li>
+                            <li><a href="https://gzzs.jyt.henan.gov.cn/zk/recruit/seek/view.aspx"><i class="iconfont icon-xinjianzu"></i><span>征求志愿信息</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="userr">
+                        <div class="con">
+                            <h1>中招成绩查询</h1>
+                            <div class="stuview">
+                                <!-- 成绩查询结果 -->
+                                <p class="viewtxt">郭书岩同学，你好！以下是你的成绩信息。现在是<span id="dynamicTime">2026-06-28 05:28</span>，查询的有效时间为<strong>2026-07-04 09:00</strong>至 <strong>2026-07-06 17:00</strong>。 <strong id="adminNotice" style="color:red">管理员用户 admin 已为您开启查询通道1</strong></p>
+                                <style>
+                                    .hastop {
+                                        margin: 20px auto;
+                                        width: 60%;
+                                        border-collapse: collapse;
+                                        font-family: "Microsoft YaHei", Arial, sans-serif;
+                                        font-size: 15px;
+                                        letter-spacing: 1px;
+                                    }
+                                    .hastop caption {
+                                        font-size: 20px;
+                                        font-weight: bold;
+                                        text-align: center;
+                                        padding-bottom: 18px;
+                                        letter-spacing: 2px;
+                                    }
+                                    .hastop td {
+                                        border: 1px solid #000;
+                                        padding: 12px 5px;
+                                    }
+                                    .gridLabel {
+                                        width: 40%;
+                                        text-align: center;
+                                    }
+                                    .gridItem {
+                                        width: 60%;
+                                        text-align: left;
+                                        padding-left: 20px;
+                                    }
+                                </style>
+                                <table class="hastop" style="margin:20px auto; width:60%;">
+                                    <caption>2026年河南省普通高中招生考试成绩单</caption>
+                                    <tr><td class="gridLabel" style="width:40%;">准考证号</td><td class="gridItem" style="width:60%;" id="score_examNo">260781100898</td></tr>
+                                    <tr><td class="gridLabel">毕业学校</td><td class="gridItem" id="score_school">卫辉市启柱中学</td></tr>
+                                    <tr><td class="gridLabel">姓&nbsp;&nbsp;&nbsp; 名</td><td class="gridItem" id="score_name">郭书岩</td></tr>
+                                    <tr><td class="gridLabel">身份证号</td><td class="gridItem" id="score_idCard">410781201105100053</td></tr>
+                                    <tr><td class="gridLabel">语&nbsp;&nbsp;&nbsp; 文</td><td class="gridItem" style="font-weight:bold;" id="score_yuwen">96</td></tr>
+                                    <tr><td class="gridLabel">数&nbsp;&nbsp;&nbsp; 学</td><td class="gridItem" style="font-weight:bold;" id="score_shuxue">110</td></tr>
+                                    <tr><td class="gridLabel">英&nbsp;&nbsp;&nbsp; 语</td><td class="gridItem" style="font-weight:bold;" id="score_yingyu">112</td></tr>
+                                    <tr><td class="gridLabel">物&nbsp;&nbsp;&nbsp; 理</td><td class="gridItem" style="font-weight:bold;" id="score_wuli">67</td></tr>
+                                    <tr><td class="gridLabel">化&nbsp;&nbsp;&nbsp; 学</td><td class="gridItem" style="font-weight:bold;" id="score_huaxue">45</td></tr>
+                                    <tr><td class="gridLabel">道德与法治</td><td class="gridItem" style="font-weight:bold;" id="score_daode">63</td></tr>
+                                    <tr><td class="gridLabel">历&nbsp;&nbsp;&nbsp; 史</td><td class="gridItem" style="font-weight:bold;" id="score_lishi">43</td></tr>
+                                    <tr><td class="gridLabel">体&nbsp;&nbsp;&nbsp; 育</td><td class="gridItem" style="font-weight:bold;" id="score_tiyu">94</td></tr>
+                                    <tr><td class="gridLabel">实&nbsp;&nbsp;&nbsp; 验</td><td class="gridItem" style="font-weight:bold;" id="score_shiyan">30</td></tr>
+                                    <tr><td class="gridLabel">地&nbsp;&nbsp;&nbsp; 理</td><td class="gridItem" style="font-weight:bold;" id="score_dili">A</td></tr>
+                                    <tr><td class="gridLabel">生&nbsp;&nbsp;&nbsp; 物</td><td class="gridItem" style="font-weight:bold;" id="score_shengwu">A</td></tr>
+                                    <tr><td class="gridLabel">总&nbsp;&nbsp;&nbsp; 分</td><td class="gridItem" style="font-weight:bold;" id="score_total">660</td></tr>
+                                </table>
+                                <div class="qring">
+                                    <div class="qr">
+                                        <div class="txt">微信扫码快速绑定</div>
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAYAAACLz2ctAAAOtUlEQVR4Aeyci5LbuA5Efe7///PeYLM0GrBIiRL9mDFSYQiwG02qjZJZk83+75/6VQ680YH/3epXOfBGB6oB32h+bX27VQNWF7zVgWrAt9pfm1cDVg+81YHvbcC32l6bNweqAZsTNb/Fgd0GBG7wvJGfGtbslXU1h/4eyrMYnGv50QFeB/0460GfCxHTWuhjyssxxDpYn+c9Nd9tQCVXXA6sdqAacLWjpTflwFQD/vkbm9uKMTrhSH9UtwqD+BWk5xntAbFuxB1hup/FI65ixtWhGBw/m2pciXX/UTzVgCOhwn6MAx910GrAj/o4vu8w1YDf95l/1BNfakCIdwvYzlc9cb6TqO4IU95sDP5MuRYcG+2fMc2z5ijXOovB94cYq45xdSi2F0PUhe18T6eHX2rAnmitlwNHHagGPOpU8Z7iwI9qQIivf3UE+pjycqxfTXvxqHaEwbmzmaaeyXIdIwx8T635tPilDfhpD1/neb8D1YDv/wy++gTVgF/98b//4T++AcHvMnrn2YvB6yDGI9shcsHzXAeOQYwzV3OIXDiWq4bF4HWW9wY4D+jR3rL+8Q34Fldq05c5UA34Mqtroy0HLjXg3tdgw7c2PrrWNGwGwn8cqxoQMeMfGaph8ajG8N7IdeDnud1ilXIjchv+10ZXuLn2aK5nHcVH9TLvUgNmscrLgVkHqgFnHSv+UgeqAZfaWWKzDkw1IPi9Bs7Ho0NC1B1xj2LQ14Q+ZvrguOVnRr47gWuOMCBsB5y6AweRnQTiHnAu39nmDk814L2qgnJgkQPVgIuMLJltB/ZWdxswf0WszvcOCP4VkPcGx0Y6uU65GQPXBMKPRSBiqgN9THl7cT6P8jMGvqfycpzrFM/YM3LdL8e7DZgLKi8HVjpQDbjSzdKadqAacNqyKljpwG4Dgt8zIMZ6EIgYeK48i6GP5TuI8Y+MmTrw/SHGWQccH50j12me60ZY5oLvDzE+qgOxTveAPqa82Rhcd1S724Cj4sLKgasO/N4GvOpM1b/EgWrAl9hcm/QcmGpAvXNY3BO1dcPbsFxHW7dZ17di47SxhR9ZA7+PAKGkabc5gH+Str41/4G7v4Hw12awnXcFNoB8BqWMMOVZDH6Ws3WASd0HEJ5Xde+kjWCqATfqa6kcuORANeAl+6r4qgNTDQjxNQue54OAY3A8ntFRLsQ9FMuxfj1ArIPj+UhHsVGczwZxf62FiMGxXDVyDFEjn0fzUa3yLAbXtbw3phqwJ1LrH+XAjzpMNeCP+rh+32GrAX/fZ/qjnmi3AfV7f9WTndXUOov1PJbrUGwUa43FmWtrvQF+z8mcrHM2h2N75P01z3vDMU2rA+dCjA2/OnYb8OoGVV8OjByoBhy5U9jTHdhtQPDXrr7WLdbTWd4byrMYjmkaVwd4HaBQ+Ck8EPJA/JNAxMHzP3D4DX1MieA8iLHyLIaIg+eG9wY4Dwg0oPvMEDH9nILInwSOc1Unx3+kDv3ebcBDKv+RaioHZh2oBpx1rPhLHagGXGpnic06MNWA0L8fQMTA83wovS+A8+AxVu5MrHuO6pS3FWstxPMpluMtrbaWuUfzVj87Z32th/EzKfcZ8VQDPuMApfndDlQDfvfn//ann2rA/CoHf33nJ8lczaFfl3U0B6+Dcaz7qcZerHUWK99yHY7dwo9AYPwP2sHPfku/wDEgof1Uz2Vxn3kLZzWuDiDg4Plt8AucB/H5B2W3qQYcCRVWDpxxoBrwjGtVs8yBasBlVpbQGQemGhD63/N6j7AYIhc8N7yNM4feqml6bQbfD/px47cZ+lyI2NY52ho4t621ue1lMzgP4t0p45braHo2Q9QBzw3X0dMwjmIW21obluto6zbrusXQ39/4bUw1YCuquRxY5UA14Conv1Tn6mM/rQHtNdxGPiT467lxerPW9ji2Dq4JaFn4f/wZVwcQfuwQCncS8FrV3IvB63a2CGcHrwOGpXqGTATCM0M/P6qT9ziaP60Bjx6geN/tQDXgd3/+b3/6asC3fwTffYCpBtT7gMXgd4dsI/Qxq20j1+Uc+jrKbXptVmwmbvVt1tq2tjWDnxPQsodY6x/AtADc72sJCvfDjI1y3X8vVh3ws0D8kZHyLFZdy3tjqgF7IrVeDpx14Oc24NknrrqPcqAa8KM+ju87zFQDQv8OABFTK/U+YDE4V3kWg2MQ7xkQMeP3hu3TRo9j643TZlvT0dZt1vUcG64j471cayzOPFvrDeVmjmLQ9w36mGmA46M9jHtmTDXgmQ2qphwYOVANOHKnsKc7sNuA+bWrOfjrOZ9UeSMMXAPI1PuPIOARUzLQ5ULEYE1+dn+tyzGsORu4Tt5Dc/2cLAavA5Qa/IXjWBBJyW4DJn6l73fgV52gGvBXfZw/72GqAX/eZ/arTnypAe3O0BvAw50BHtd69Vvr2XlwvcwHx3Jd5h7Nsw7098jcXg6uATzQjp5thgfcP5u8YdZRPGPQ14E+ppqXGlCFKi4HzjhQDXjGtapZ5sBuA4K/SiHGo1Pk13Uvh6gJ/Tzvp5oQ6xTLdZpDrFPMYnBcNS02vDegXwd9rKdn6+B1gC3dB3D/WgXu6xYAXczw0bDnbGPEO4vtNqAKV1wOrHagGnC1o6U35UA14JRdRV7twG4Dtu//rRn8bpEPBuewvI/qZgx8j4wdrVOexeCagC11R96zlwPhDqa8LK6YxeC1mQuOGVcH9LEeD7wG/sa6J/xdg7+z6ihvJt5twBmx4pYDsw5UA846VvylDuw2IPx93cLjPDrJ6PU8wrKmciGeQbkQMejnqqkaFivm8T///gMgw3sD4n49nq1D5EI/1zNYrQ7FIGooDyIGnqvGVgzOVU2LwbGt2rZm3N7YbcBeYa2XAyscqAZc4WJpnHagGvC0dVW4woHdBmzf4zaPNgS/D0CMcx04PsKAANsZdCio6zlWnsXA/ccilh8d4HUQ47wnOJ71M1fzzIW+jnJVw2LFcmx4GxnLeePZPIPBsXPvNmDetPJyYKUD1YAr3fyFWs9+pKkGtNdwb8wcVDX26sBf5RBjrYWIgefKy7GexeKMg+sY3hu5rsezdXBNiLHhOlRX1y1WDMY6xm9jVKdYjlt9mxWH/v7Ky/FUA+biysuBqw5UA151sOovOVANeMm+Kr7qwG4DQvxuh+283Qu2ZtiuAabOn7WPFuc6zYH7j2SAo5L/8oBQC8fyf4sP/rHqrLod+DlV32JwDGKsGqvi3QZctVHplANbDnxuA26dttZ+nQPVgL/uI/1ZD7TbgHYv6I3Ro4LfHzJP9UaY8izOXM0N7w3lzcaqCf5MQJBS3pU4iE4keU/gfj/NMsoF50H8/zEaL9euzncbcPWGpVcOqAPVgOpGxS93YLcBIb6iwXN7RbeRT97Wt2bY1jBu1jmag2sCoQy4fx0BAbM9dQCBC54rz2IVAucBCj3EwH2PDIJjQIBtTx3AXQdirIUQMfBceRaDYxC/kiFi4Lmey2JwzHR7Y7cBe4W1/jQHvkq4GvCrPu7Pe9hqwM/7TL7qRC9pQPD7AMR7RXYbIldx6GN279ABzlWNvVg1cjyqHXHBzwLx+SFioz0ylvc8mqvOXo1yc6y1M5hyX9KAumHF5YA6UA2oblT8cgeWNSDErxLwPD8VOAYx1te6xblWc8PbgLFO49msGhDroJ9rXY4h1ilue+oA5yrPYuVZbGttgNcBbXl6Nt02gPCjnCwGjs9gmdvLQwP2SLVeDjzLgWrAZzlbuoccqAY8ZFORnuXAsgZsd4o2jw7cODaPeIbBsTuIaemw2jbANSDGjXNm7u1nWhD3Ac+1LsdWqwO8TtcthuvY3v62T29oLfhZIMa9eltf1oAmVqMcmHWgGnDWseIvdeBSA0J81YLnekp9VVsMzrNch9blWHkWZ1xz6O9htW38rfE/23qbHXmM4NweqgSuASj0b9zOYfO/C50/gO6PU+A4Bn2unUEHOFfXLe4c82H5UgM+qNVCOTDpQDXgpGFFX+tANeBaP0tt0oHdBrTv86sjn0n1MgZ+rwACDIR7jupAxEJhSsC5qmExOAaESiDsryBEDDw3XR3gmGpsxeBc1bBY+ZbrUCzHytuLc+3qfLcBV29YeuWAOlANqG58YfzuR95tQPCvAFgfZwPyV4LiI0x5e7HqQHwmxXI80j3LHWkaprqW6ziLqQbE51csx9DnQh/LOprvNqCSKy4HVjtQDbja0dKbcqAacMquIq92YKoB9c5xJZ55CN1nVKc8i0dc8PvKiGcY9Lm2TxvgPMBKXzqA7o+IRgdp52/ziPsMbKoBn3GA0vxuB97XgN/tez39fw5UA/5nRE3vceBSA0K8d8B2PvNoEDW0FiIGnitvJm53nzaDa0L8R+RndSFqzuiMuOC67fxtPloHrgGP8Uin7bU1j+oUu9SAKlRxOXDGgWrAM65VzTIHfnQD6qsf4tfHUSw7qXUWg+tmLjhmXB3K1XWLweuUZzE4BtjSoQEc/jGMnaGNLN7Wj8xaC3F/rVdejn90A+aH+SF5HVMcqAYUMyp8vQPVgK/3vHYUBz6uAfXuYDH43ULO/RAaVwd4na5bDI49CL1gwc5wdED/rCMN8LrM00ccYcrbiqG/Bzi2VdvWPq4B28Fq/g4HqgG/43P+2Ke81ID59d3LZ54e/NUN8W8isr7qQqwbYaoDsQ5irjpaZ7FiEOvAc+VZDI5BjA3XYfu0AZEL/bzV2Kx6ezH0NXOtabeRsc18Y/FSA27o1VI5MOVANeCUXUVe7UA14GpHS2/KgakGhP79AI5jUycUMvT3ENpD2O4pbQbXaWttfigeLLSavRl8P2Cg+AgB979iy/s8sn0FvM5X/0bgGMT4L8P/1D19dT86WjfVgPvbFqMcmHOgGnDOr2IvdmC3AfVV+ow4P0/eQ/GMHc1vN1W53bQuIhFTnsWZezS32qMja2rdCFNejs/WmU6uXZ3vNuDqDUuvHFAHqgHVjYpf7kA14Mstrw3VgWpAdaPilztQDfhyy2tDdaAaUN34hfGnP9L/AQAA//956GWHAAAABklEQVQDADOFdfxVQdbOAAAAAElFTkSuQmCC">
+                                        <img src="https://gzzs.jyt.henan.gov.cn/zk/images/sys/wx.jpg">
+                                        <div class="txt">接收重要消息通知<br>即时掌控考试动态</div>
+                                    </div>
+                                    <div class="logingr">
+                                        <div>关注和绑定官方微信后，你将可以：</div>
+                                        1､通过微信扫码功能，实现安全登录；<br>
+                                        2､随时查询基本信息、报名信息、志愿信息、成绩信息、录取信息等；<br>
+                                        3､找回密码超方便；<br>
+                                        还有更多功能等待你来挖掘……
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                function formatDateTime(date) {
+                                    const year = date.getFullYear();
+                                    const month = String(date.getMonth() + 1).padStart(2, '0');
+                                    const day = String(date.getDate()).padStart(2, '0');
+                                    const hours = String(date.getHours()).padStart(2, '0');
+                                    const minutes = String(date.getMinutes()).padStart(2, '0');
+                                    return `${year}-${month}-${day} ${hours}:${minutes}`;
+                                }
+                                function updateTime() {
+                                    const now = new Date();
+                                    const formattedTime = formatDateTime(now);
+                                    const timeElement = document.getElementById('dynamicTime');
+                                    if (timeElement) {
+                                        timeElement.textContent = formattedTime;
+                                    }
+                                }
+                                window.addEventListener('DOMContentLoaded', function () {
+                                    updateTime();
+                                });
+                                if (document.readyState === 'interactive' || document.readyState === 'complete') {
+                                    updateTime();
+                                }
+                            </script>
+                        </div>
+                        <ul id="rwc" class="floats">
+                            <li title="微信客服" class="weixin"><i class="iconfont icon-gongzhonghao"></i>
+                                <div style="height: 150px;">
+                                    <img style="width: 110px; height: auto;" src="https://gzzs.jyt.henan.gov.cn/zk/images/sys/wx.jpg" /><br />
+                                    扫码提问
+                                </div>
+                            </li>
+                            <li title="客服QQ">
+                                <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2450371103&site=qq&menu=yes"><i class="iconfont icon-qq"></i></a>
+                            </li>
+                            <li class="totop" title="返回顶部"><a href="#top"><i class="iconfont icon-arrow-up"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="foot noprint">
+                        <div style="color: #666;">河南中招管理网 All Rights Reserved （建议使用1024×768显示分辨率,IE8.0或以上版本浏览）</div>
+                        <div></div>
+                        <div style="display: none">
+                            <script>
+                                var _hmt = _hmt || [];
+                                (function () {
+                                    var hm = document.createElement("script");
+                                    hm.src = "https://hm.baidu.com/hm.js?712623f11dcddfaf857d3e505c86088a";
+                                    var s = document.getElementsByTagName("script")[0];
+                                    s.parentNode.insertBefore(hm, s);
+                                })();
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 设置弹窗 ==================== -->
+        <div id="settingsModalOverlay">
+            <div id="settingsModal">
+                <div class="modal-header">
+                    <h2>隐藏设置</h2>
+                    <button type="button" class="close-btn" id="modalCloseBtn" title="关闭">✕</button>
+                </div>
+                <div class="modal-body">
+                    <!-- 基本信息 -->
+                    <div class="section-title">基本信息</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>准考证号</label>
+                            <input type="text" id="set_examNo" value="260781100898" />
+                        </div>
+                        <div class="form-group">
+                            <label>考生类别</label>
+                            <input type="text" id="set_category" value="应届毕业生" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>姓名</label>
+                            <input type="text" id="set_name" value="郭书岩" />
+                        </div>
+                        <div class="form-group">
+                            <label>性别</label>
+                            <select id="set_gender">
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>身份证号</label>
+                            <input type="text" id="set_idCard" value="410781201105100053" />
+                        </div>
+                        <div class="form-group">
+                            <label>民族</label>
+                            <input type="text" id="set_nation" value="汉族" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>政治面貌</label>
+                            <input type="text" id="set_politics" value="群众" />
+                        </div>
+                        <div class="form-group">
+                            <label>出生日期</label>
+                            <input type="text" id="set_birthday" value="2011-05-10" />
+                        </div>
+                    </div>
+<div class="form-row">
+    <div class="form-group">
+        <label>毕业学校</label>
+        <input type="text" id="set_school" value="卫辉市启柱中学" />
+    </div>
+</div>
+                    <div class="section-spacer"></div>
+
+                    <!-- 管理员提示信息 -->
+                    <div class="section-title"> 提示信息</div>
+                    <div class="color-row">
+                        <div class="form-group">
+                            <label>提示内容</label>
+                            <input type="text" id="set_adminNoticeText" value="管理员用户 admin 已为您开启查询通道1" />
+                        </div>
+                        <div class="form-group">
+                            <label>文字颜色</label>
+                            <input type="color" id="set_adminNoticeColor" value="#ff0000" />
+                        </div>
+                    </div>
+
+                    <div class="section-spacer"></div>
+
+                    <!-- 成绩数据 -->
+                    <div class="section-title">成绩数据</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>语文</label>
+                            <input type="text" id="set_yuwen" value="96" />
+                        </div>
+                        <div class="form-group">
+                            <label>数学</label>
+                            <input type="text" id="set_shuxue" value="110" />
+                        </div>
+                        <div class="form-group">
+                            <label>英语</label>
+                            <input type="text" id="set_yingyu" value="112" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>物理</label>
+                            <input type="text" id="set_wuli" value="67" />
+                        </div>
+                        <div class="form-group">
+                            <label>化学</label>
+                            <input type="text" id="set_huaxue" value="45" />
+                        </div>
+                        <div class="form-group">
+                            <label>道德与法治</label>
+                            <input type="text" id="set_daode" value="63" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>历史</label>
+                            <input type="text" id="set_lishi" value="43" />
+                        </div>
+                        <div class="form-group">
+                            <label>体育</label>
+                            <input type="text" id="set_tiyu" value="94" />
+                        </div>
+                        <div class="form-group">
+                            <label>实验</label>
+                            <input type="text" id="set_shiyan" value="30" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>地理</label>
+                            <input type="text" id="set_dili" value="A" />
+                        </div>
+                        <div class="form-group">
+                            <label>生物</label>
+                            <input type="text" id="set_shengwu" value="A" />
+                        </div>
+                        <div class="form-group total-row">
+                            <div class="form-group" style="margin-bottom:0;">
+                                <label>总分</label>
+                                <input type="text" id="set_total" value="660" />
+                            </div>
+                            <button type="button" class="btn-auto-calc" id="autoCalcBtn" title="根据各科数值成绩自动计算总分">🔄 自动计算</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-reset" id="modalResetBtn">重置</button>
+                    <button type="button" class="btn btn-save" id="modalSaveBtn">保存</button>
+                    <button type="button" class="btn btn-close-modal" id="modalCloseBtn2">关闭</button>
+                </div>
+            </div>
+        </div>
+        <!-- ==================== 弹窗结束 ==================== -->
+
+    </form>
+    <!--[if lt IE 8]>
+    <div id='Ie6' class="ie6">
+    <span onclick='this.parentNode.style.display="none";'>×</span>
+    <div>您的IE浏览器版本过低，大部分网站已经不兼容且存在安全隐患，请升级您的浏览器，以获得更好的上网体验。</div>
+    <a href='https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads' target='_blank'>下载最新IE浏览器</a>
+    <a href='http://firefox.com.cn/' target='_blank'>下载火狐浏览器</a>
+    <a href='http://www.google.com/chrome' target='_blank'>下载谷歌浏览器</a>
+    </div>
+    <![endif]-->
+    <script type="text/javascript">
+        $(function () {
+            function Resize() {
+                var windoww = $(window).width();
+                var contenthywidth = $('.contenthy').width();
+                if (contenthywidth) {
+                    $("#rwc").css({ 'margin-left': ((windoww + contenthywidth) / 2) + 'px' });
+                } else {
+                    $("#rwc").css({ 'margin-left': ((windoww + 980) / 2) + 'px' });
+                }
+            }
+            window.onresize = Resize;
+            Resize();
+        });
+    </script>
+
+    <!-- ==================== 设置弹窗JS逻辑 ==================== -->
+    <script>
+        (function () {
+            // ========== 默认值定义（与HTML中初始内容一致） ==========
+            var DEFAULTS = {
+                // 基本信息
+                examNo: '260781100898',
+                category: '应届毕业生',
+                name: '郭书岩',
+                gender: '男',
+                idCard: '410781201105100053',
+                nation: '汉族',
+                politics: '群众',
+                birthday: '2011-05-10',
+                school: '卫辉市启柱中学',
+                // 管理员提示
+                adminNoticeText: '管理员用户 admin 已为您开启查询通道1',
+                adminNoticeColor: '#ff0000',
+                // 成绩
+                yuwen: '96',
+                shuxue: '110',
+                yingyu: '112',
+                wuli: '67',
+                huaxue: '45',
+                daode: '63',
+                lishi: '43',
+                tiyu: '94',
+                shiyan: '30',
+                dili: 'A',
+                shengwu: 'A',
+                total: '660'
+            };
+
+
+            // ========== 替换为 localStorage 存储工具 ==========
+var STORAGE_KEY = 'zk_user_settings';
+
+function saveToStorage(settings) {
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
+        console.log('设置已保存到 localStorage');
+    } catch (e) {
+        console.error('保存失败，可能存储空间已满', e);
+        alert('保存失败，请检查浏览器存储空间或更换浏览器。');
+    }
+}
+
+function loadFromStorage() {
+    try {
+        var data = localStorage.getItem(STORAGE_KEY);
+        if (data) {
+            return JSON.parse(data);
+        }
+    } catch (e) {
+        console.warn('读取存储失败，使用默认设置', e);
+    }
+    return null;
+}
+
+            // ========== 从Cookie加载设置 ==========
+            function loadSettings() {
+                var cookieVal = loadFromStorage();
+                if (cookieVal) {
+                    try {
+                        var settings = JSON.parse(cookieVal);
+                        // 合并默认值，确保所有字段都存在
+                        var merged = {};
+                        for (var key in DEFAULTS) {
+                            if (DEFAULTS.hasOwnProperty(key)) {
+                                merged[key] = (settings[key] !== undefined) ? settings[key] : DEFAULTS[key];
+                            }
+                        }
+                        return merged;
+                    } catch (e) {
+                        console.warn('Cookie解析失败，使用默认设置', e);
+                        return JSON.parse(JSON.stringify(DEFAULTS));
+                    }
+                }
+                return JSON.parse(JSON.stringify(DEFAULTS));
+            }
+
+            // ========== 保存设置到Cookie ==========
+            function saveSettings(settings) {
+                var jsonStr = JSON.stringify(settings);
+                saveToStorage(jsonStr);
+            }
+
+            // ========== 更新页面显示 ==========
+            function updatePageDisplay(settings) {
+                // 基本信息 - 顶部信息区
+                var infoExamNoEl = document.getElementById('info_examNo');
+                var infoCategoryEl = document.getElementById('info_category');
+                var infoNameEl = document.getElementById('info_name');
+                var infoGenderEl = document.getElementById('info_gender');
+                var infoIdCardEl = document.getElementById('info_idCard');
+                var infoNationEl = document.getElementById('info_nation');
+                var infoPoliticsEl = document.getElementById('info_politics');
+                var infoBirthdayEl = document.getElementById('info_birthday');
+var scoreSchoolEl = document.getElementById('score_school');
+if (scoreSchoolEl) scoreSchoolEl.textContent = settings.school;
+                if (infoExamNoEl) infoExamNoEl.textContent = '准考证号：' + settings.examNo;
+                if (infoCategoryEl) infoCategoryEl.textContent = '考生类别： ' + settings.category;
+                if (infoNameEl) infoNameEl.innerHTML = '姓&nbsp;&nbsp;&nbsp; &nbsp;名： ' + settings.name;
+                if (infoGenderEl) infoGenderEl.innerHTML = '性&nbsp;&nbsp;&nbsp;&nbsp;  别： ' + settings.gender;
+                if (infoIdCardEl) infoIdCardEl.textContent = '身份证号：' + settings.idCard;
+                if (infoNationEl) infoNationEl.innerHTML = '民&nbsp;&nbsp;&nbsp; &nbsp; 族： ' + settings.nation;
+                if (infoPoliticsEl) infoPoliticsEl.textContent = '政治面貌： ' + settings.politics;
+                if (infoBirthdayEl) infoBirthdayEl.textContent = '出生日期： ' + settings.birthday;
+
+                // 管理员提示
+                var adminNoticeEl = document.getElementById('adminNotice');
+                if (adminNoticeEl) {
+                    adminNoticeEl.textContent = settings.adminNoticeText;
+                    adminNoticeEl.style.color = settings.adminNoticeColor;
+                }
+
+                // 成绩表格
+                var scoreExamNoEl = document.getElementById('score_examNo');
+                var scoreNameEl = document.getElementById('score_name');
+                var scoreIdCardEl = document.getElementById('score_idCard');
+                var scoreYuwenEl = document.getElementById('score_yuwen');
+                var scoreShuxueEl = document.getElementById('score_shuxue');
+                var scoreYingyuEl = document.getElementById('score_yingyu');
+                var scoreWuliEl = document.getElementById('score_wuli');
+                var scoreHuaxueEl = document.getElementById('score_huaxue');
+                var scoreDaodeEl = document.getElementById('score_daode');
+                var scoreLishiEl = document.getElementById('score_lishi');
+                var scoreTiyuEl = document.getElementById('score_tiyu');
+                var scoreShiyanEl = document.getElementById('score_shiyan');
+                var scoreDiliEl = document.getElementById('score_dili');
+                var scoreShengwuEl = document.getElementById('score_shengwu');
+                var scoreTotalEl = document.getElementById('score_total');
+
+                if (scoreExamNoEl) scoreExamNoEl.textContent = settings.examNo;
+                if (scoreNameEl) scoreNameEl.textContent = settings.name;
+                if (scoreIdCardEl) scoreIdCardEl.textContent = settings.idCard;
+                if (scoreYuwenEl) scoreYuwenEl.textContent = settings.yuwen;
+                if (scoreShuxueEl) scoreShuxueEl.textContent = settings.shuxue;
+                if (scoreYingyuEl) scoreYingyuEl.textContent = settings.yingyu;
+                if (scoreWuliEl) scoreWuliEl.textContent = settings.wuli;
+                if (scoreHuaxueEl) scoreHuaxueEl.textContent = settings.huaxue;
+                if (scoreDaodeEl) scoreDaodeEl.textContent = settings.daode;
+                if (scoreLishiEl) scoreLishiEl.textContent = settings.lishi;
+                if (scoreTiyuEl) scoreTiyuEl.textContent = settings.tiyu;
+                if (scoreShiyanEl) scoreShiyanEl.textContent = settings.shiyan;
+                if (scoreDiliEl) scoreDiliEl.textContent = settings.dili;
+                if (scoreShengwuEl) scoreShengwuEl.textContent = settings.shengwu;
+                if (scoreTotalEl) scoreTotalEl.textContent = settings.total;
+
+                // 更新viewtxt段落中的姓名（如果段落开头有姓名）
+                var viewtxtEl = document.querySelector('.viewtxt');
+                if (viewtxtEl && viewtxtEl.firstChild) {
+                    // 段落开头是"郭书岩同学，你好！..."，需要更新姓名
+                    var fullText = viewtxtEl.textContent || '';
+                    // 用正则替换开头的姓名（在"同学"之前）
+                    var updatedText = fullText.replace(/^[^同]+同学/, settings.name + '同学');
+                    if (updatedText !== fullText) {
+                        // 保留dynamicTime span和后续结构，只更新文本节点
+                        var dynamicTimeEl = document.getElementById('dynamicTime');
+                        if (dynamicTimeEl) {
+                            var beforeText = settings.name + '同学，你好！以下是你的网上成绩查询结果。现在是';
+                            var afterText = '，查询的有效时间为';
+                            // 重建viewtxt内容
+                            var adminNoticeEl2 = document.getElementById('adminNotice');
+                            var adminNoticeHTML = adminNoticeEl2 ? adminNoticeEl2.outerHTML : '';
+                            viewtxtEl.innerHTML = beforeText + ' ' + dynamicTimeEl.outerHTML + afterText + '<strong>2026-07-04 09:00</strong>至 <strong>2026-07-06 17:00</strong>。 ' + adminNoticeHTML;
+                            // 重新获取dynamicTime引用（因为innerHTML重建了）
+                            window._dynamicTimeEl = document.getElementById('dynamicTime');
+                        }
+                    }
+                }
+            }
+
+            // ========== 弹窗相关 ==========
+            var overlay = document.getElementById('settingsModalOverlay');
+            var settingsLink = document.getElementById('settingsLink');
+            var modalCloseBtn = document.getElementById('modalCloseBtn');
+            var modalCloseBtn2 = document.getElementById('modalCloseBtn2');
+            var modalSaveBtn = document.getElementById('modalSaveBtn');
+            var modalResetBtn = document.getElementById('modalResetBtn');
+            var autoCalcBtn = document.getElementById('autoCalcBtn');
+
+            // 弹窗输入字段映射
+            var inputMap = {
+                examNo: 'set_examNo',
+                category: 'set_category',
+                name: 'set_name',
+                gender: 'set_gender',
+                idCard: 'set_idCard',
+                nation: 'set_nation',
+                politics: 'set_politics',
+                birthday: 'set_birthday',
+                school: 'set_school',
+                adminNoticeText: 'set_adminNoticeText',
+                adminNoticeColor: 'set_adminNoticeColor',
+                yuwen: 'set_yuwen',
+                shuxue: 'set_shuxue',
+                yingyu: 'set_yingyu',
+                wuli: 'set_wuli',
+                huaxue: 'set_huaxue',
+                daode: 'set_daode',
+                lishi: 'set_lishi',
+                tiyu: 'set_tiyu',
+                shiyan: 'set_shiyan',
+                dili: 'set_dili',
+                shengwu: 'set_shengwu',
+                total: 'set_total'
+            };
+
+            // 填充弹窗表单
+            function populateModalForm(settings) {
+                for (var key in inputMap) {
+                    if (inputMap.hasOwnProperty(key)) {
+                        var el = document.getElementById(inputMap[key]);
+                        if (el && settings[key] !== undefined) {
+                            el.value = settings[key];
+                        }
+                    }
+                }
+            }
+
+            // 从弹窗表单收集设置
+            function collectModalForm() {
+                var settings = {};
+                for (var key in inputMap) {
+                    if (inputMap.hasOwnProperty(key)) {
+                        var el = document.getElementById(inputMap[key]);
+                        if (el) {
+                            settings[key] = el.value;
+                        }
+                    }
+                }
+                return settings;
+            }
+
+            // 打开弹窗
+            function openModal() {
+                var currentSettings = loadSettings();
+                populateModalForm(currentSettings);
+                overlay.classList.add('active');
+                overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+
+            // 关闭弹窗
+            function closeModal() {
+                overlay.classList.remove('active');
+                overlay.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+
+            // 保存设置
+            function handleSave() {
+                var settings = collectModalForm();
+                saveSettings(settings);
+                updatePageDisplay(settings);
+                closeModal();
+                // 轻提示效果
+                showToast('设置已保存！');
+            }
+
+            // 恢复默认值
+            function handleReset() {
+                if (confirm('确定要恢复所有设置为默认值吗？当前修改将丢失。')) {
+                    var defaultsCopy = JSON.parse(JSON.stringify(DEFAULTS));
+                    populateModalForm(defaultsCopy);
+                    saveSettings(defaultsCopy);
+                    updatePageDisplay(defaultsCopy);
+                    closeModal();
+                    showToast('已恢复默认设置！');
+                }
+            }
+
+            // 自动计算总分
+            function handleAutoCalc() {
+                var numericFields = ['set_yuwen', 'set_shuxue', 'set_yingyu', 'set_wuli', 'set_huaxue',
+                    'set_daode', 'set_lishi', 'set_tiyu', 'set_shiyan'
+                ];
+                var sum = 0;
+                var allNumeric = true;
+                for (var i = 0; i < numericFields.length; i++) {
+                    var el = document.getElementById(numericFields[i]);
+                    if (el) {
+                        var val = parseFloat(el.value);
+                        if (!isNaN(val)) {
+                            sum += val;
+                        } else {
+                            allNumeric = false;
+                        }
+                    }
+                }
+                var totalEl = document.getElementById('set_total');
+                if (totalEl) {
+                    totalEl.value = sum;
+                    if (!allNumeric) {
+                        showToast('部分科目非数值，已跳过，总分=' + sum);
+                    } else {
+                        showToast('总分已自动计算：' + sum);
+                    }
+                }
+            }
+
+            // 简易Toast提示
+            function showToast(msg) {
+                var existingToast = document.getElementById('settingsToast');
+                if (existingToast) {
+                    existingToast.remove();
+                }
+                var toast = document.createElement('div');
+                toast.id = 'settingsToast';
+                toast.textContent = msg;
+                toast.style.cssText = [
+                    'position:fixed',
+                    'top:20px',
+                    'left:50%',
+                    'transform:translateX(-50%)',
+                    'background:#333',
+                    'color:#fff',
+                    'padding:12px 24px',
+                    'border-radius:8px',
+                    'z-index:999999',
+                    'font-size:15px',
+                    'font-family:"Microsoft YaHei",Arial,sans-serif',
+                    'letter-spacing:0.5px',
+                    'box-shadow:0 8px 24px rgba(0,0,0,0.3)',
+                    'pointer-events:none',
+                    'animation:toastFadeInOut 2.2s ease forwards'
+                ].join(';');
+                document.body.appendChild(toast);
+                setTimeout(function () {
+                    if (toast.parentNode) {
+                        toast.remove();
+                    }
+                }, 2300);
+            }
+
+            // 添加Toast动画样式
+            var toastStyle = document.createElement('style');
+            toastStyle.textContent = [
+                '@keyframes toastFadeInOut {',
+                '0% { opacity:0; transform:translateX(-50%) translateY(-20px); }',
+                '15% { opacity:1; transform:translateX(-50%) translateY(0); }',
+                '80% { opacity:1; transform:translateX(-50%) translateY(0); }',
+                '100% { opacity:0; transform:translateX(-50%) translateY(-20px); }',
+                '}'
+            ].join('');
+            document.head.appendChild(toastStyle);
+
+            // ========== 事件绑定 ==========
+            if (settingsLink) {
+                settingsLink.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    openModal();
+                });
+            }
+            if (modalCloseBtn) {
+                modalCloseBtn.addEventListener('click', closeModal);
+            }
+            if (modalCloseBtn2) {
+                modalCloseBtn2.addEventListener('click', closeModal);
+            }
+            if (modalSaveBtn) {
+                modalSaveBtn.addEventListener('click', handleSave);
+            }
+            if (modalResetBtn) {
+                modalResetBtn.addEventListener('click', handleReset);
+            }
+            if (autoCalcBtn) {
+                autoCalcBtn.addEventListener('click', handleAutoCalc);
+            }
+
+            // 点击遮罩关闭弹窗
+            if (overlay) {
+                overlay.addEventListener('click', function (e) {
+                    if (e.target === overlay) {
+                        closeModal();
+                    }
+                });
+            }
+
+            // ESC键关闭弹窗
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && overlay && overlay.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+
+            // ========== 页面加载时应用Cookie中的设置 ==========
+            function initPageWithSavedSettings() {
+                var settings = loadSettings();
+                updatePageDisplay(settings);
+            }
+
+            // DOM加载完成后初始化
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initPageWithSavedSettings);
+            } else {
+                initPageWithSavedSettings();
+            }
+        })();
+    </script>
+</body>
+</html>
